@@ -1,0 +1,1169 @@
+---
+title: "WA DOC Purple Air Monitor Co-Location QA"
+output:
+  word_document: default
+  html_document: default
+date: "`r Sys.Date()`"
+---
+
+## Setup tasks
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(fig.width=8, fig.height=4) 
+```
+
+### Clear environment
+
+```{r, include=FALSE}
+# Clear environment
+rm(list = ls(all = TRUE))
+if (!is.null(sessionInfo()$otherPkgs)) {
+  res <- suppressWarnings(
+    lapply(paste('package:', names(sessionInfo()$otherPkgs), sep=""),
+           detach, character.only=TRUE, unload=TRUE, force=TRUE))
+}
+```
+
+### Load packages
+
+```{r,include=FALSE}
+# Load packages, installing if needed
+if (!requireNamespace("pacman", quietly = TRUE))
+  install.packages("pacman")
+pacman::p_load(
+  here,
+  dplyr,
+  tidyr,
+  tidyverse,
+  ggplot2,
+  MetBrewer,
+  stringr,
+  data.table,
+  ggpubr,
+  zoo
+)
+```
+
+### Make functions
+
+```{r,include=FALSE}
+# Functions for reading in co-location datasets and getting sensor names
+read_and_name_csv <- function(file_path) {
+  # Extract folder and file name without extension
+  folder_name <- dirname(file_path) %>% basename()
+  file_name <- basename(file_path) %>% tools::file_path_sans_ext()
+  
+  # Create the name for the data frame
+  df_name <- paste(folder_name, file_name, sep = "_")
+  
+  # Read the CSV file
+  df <- read.csv(file_path)
+  
+  # Assign the data frame to the global environment with the constructed name
+  assign(df_name, df, envir = .GlobalEnv)
+}
+
+#Get sensor name function from the folder name
+get_sensor_name <- function(df_name) {
+  sensor_name <- str_sub(df_name, start = -30, end = -14)
+  sensor_name
+}
+
+```
+
+## Read in Nephelometer data
+
+```{r,include=FALSE}
+#read in the nephelometer data - data pulled from https://secure.pscleanair.org/airgraphing
+neph428_513 <- read_csv(here("Duwamish4_28-5_13all.csv"), skip = 8)
+neph513_520 <- read_csv(here("Duwamish5_13-5_20all.csv"), skip = 8)
+neph520_601 <- read_csv(here("Duwamish5_20-6_1all.csv"), skip = 8)
+
+#clear out site name from columns
+colnames(neph428_513) <- gsub("\\s", "", sub(" - 1Hr Avg", "", sub("Seattle Duwamish Vly - ", "", colnames(neph428_513))))
+colnames(neph513_520) <- gsub("\\s", "", sub(" - 1Hr Avg", "", sub("Seattle Duwamish Vly - ", "", colnames(neph513_520))))
+colnames(neph520_601) <- gsub("\\s", "", sub(" - 1Hr Avg", "", sub("Seattle Duwamish Vly - ", "", colnames(neph520_601))))
+
+colnames(neph428_513) <- gsub("-", "_", gsub("/", "_", colnames(neph428_513)))
+colnames(neph513_520) <- gsub("-", "_", gsub("/", "_", colnames(neph513_520)))
+colnames(neph520_601) <- gsub("-", "_", gsub("/", "_", colnames(neph520_601)))
+
+#parse date/time
+neph428_513$DateTime <- as_datetime(neph428_513$ObservationTime, tz="US/Pacific", format = "%m/%d/%Y %I:%M:%S %p")
+neph513_520$DateTime <- as_datetime(neph513_520$ObservationTime, tz="US/Pacific", format = "%m/%d/%Y %I:%M:%S %p")
+neph520_601$DateTime <- as_datetime(neph520_601$ObservationTime, tz="US/Pacific", format = "%m/%d/%Y %I:%M:%S %p")
+
+#make list of all neph data
+all_neph <- list(neph428_513, neph513_520, neph520_601)
+
+#renaming variables
+all_neph <- lapply(1:length(all_neph), FUN = function(i){
+  all_neph[[i]] %>% rename(scat_coeff_A1000 = "LightScatEc2_bscat10e_4",
+         atmos_pressure = "AmbPres_kPa", 
+         Pm25Neph_ug_m3 = "Pm25Neph_ug_m3")
+})
+
+#convert b-scat to PM2.5 - per Tim 
+all_neph <- lapply(1:length(all_neph), FUN = function(i){
+  all_neph[[i]] <- all_neph[[i]] %>% mutate (npm25_LFP =(25.863*(scat_coeff_A1000)) + 0.7)
+})
+```
+
+---
+
+# 4/28/26 - 5/13/26 Co-Location
+
+## Load and process PA files
+
+### load 4-28 through 5-13 files
+```{r, message=FALSE, warning=FALSE}
+# List of CSV files that we want from this folder (CHANGE THIS PER FOLDER)
+all_files <- list.files(here(), recursive = TRUE)
+csv_files <- all_files[grepl("^CoLo1_28Apr-13May/.*/.*\\.csv$", all_files)]
+unique_sensors <- unique(get_sensor_name(csv_files))
+
+#merge all the data for selected colocation period
+mydatalist <- lapply(1:length(csv_files), FUN = function(i){
+  read_and_name_csv(csv_files[i])
+})
+mydata <- rbindlist(mydatalist)
+
+#parse date/time
+mydata$DateTime <- as_datetime(mydata$UTCDateTime,tz="US/Pacific")
+```
+
+### process chanel averages
+```{r,include=FALSE}
+# average channel a and channel b
+mydata[, pm25ave := rowMeans(.SD), 
+       by = c("mac_address", "UTCDateTime"), 
+       .SDcols = c("pm2_5_atm","pm2_5_atm_b") ]
+
+# create separate table that is just week avg & sd data, mac address
+myavemac <- mydata[ ,list(weekavepm25 =  mean(pm25ave),
+                          weeksdpm25 = sd(pm25ave) ), 
+                    by = c("mac_address")]
+
+#average PM2.5 data over time -- TO-DO, THE BELOW DIDN'T WORK
+#sensoravemac <- mydata[ ,list(mac_address = mac_address,
+#                          pm25ave =  pm25ave,
+#                          total_pm25ave = mean(pm25ave)), 
+#                    by = c("UTCDateTime")]
+```
+
+Sensors (by mac address) used in this co-location period:
+```{r}
+print(unique_sensors)
+```
+
+```{r, include=FALSE}
+#parse sensoravemac data
+#sensoravemac$DateTime <- as_datetime(sensoravemac$UTCDateTime,tz="US/Pacific")
+```
+
+### split data into groups
+```{r, include=FALSE}
+#split data into two groups of sensors to plot multiple sensors at once
+mydata_split <- split(mydata, f= mydata$mac_address) #splitting into indiv sensors
+mydata_s1 <- lapply(mydata_split[1:4],rbind) 
+mydata_s1 <- rbindlist(mydata_s1)
+
+mydata_s2 <- lapply(mydata_split[5:7],rbind)
+mydata_s2 <- rbindlist(mydata_s2)
+
+# split avg sensoravemac data into groups of sensors (4 or 5)
+#sensoravemac_split <- split(sensoravemac, f= sensoravemac$mac_address)
+#sensoravemac_s1 <- lapply(sensoravemac_split[1:5],rbind)
+#sensoravemac_s1 <- rbindlist(sensoravemac_s1)
+
+#sensoravemac_s2 <- lapply(sensoravemac_split[6:10],rbind)
+#sensoravemac_s2 <- rbindlist(sensoravemac_s2)
+
+#sensoravemac_s3 <- lapply(sensoravemac_split[11:14],rbind)
+#sensoravemac_s3 <- rbindlist(sensoravemac_s3)
+```
+
+---
+
+## PM2.5 Channel Agreement: Individual Sensors for 4/28-5/13
+
+To examine whether the channels agree with each other on individual sensors, I created plots of channel a vs. channel b., and included a regression line and the R^2 value.
+
+### plot regression of channel a vs b
+```{r, include=FALSE}
+myplots <- lapply(1:length(mydata_split), FUN = function(i){
+  ggplot(mydata_split[[i]], aes(x=pm2_5_atm, y=pm2_5_atm_b))+ 
+  geom_point(pch=1)+ ggtitle("PM2.5 Channels for 4/28/26 to 5/13/26", subtitle = unique(mydata_split[[i]]$mac_address)) + 
+  geom_smooth(method="lm", color="black") +
+  theme(plot.title = element_text(hjust = 0.5)) + 
+  theme(plot.subtitle = element_text(hjust = 0.5, color="grey32")) +
+  xlab("pm2_5_atm (ug/m3)") + ylab("pm2_5_atm_b (ug/m3)") +
+  stat_cor(aes(label=after_stat(rr.label))
+  #, label.x=5, label.y=8
+  )
+}) 
+```
+```{r, fig.show="hold", out.width="50%", warning=FALSE, message=FALSE}
+indiv_plots <- lapply(myplots,plot)
+```
+
+All the units have R^2 of either 0.95 or 0.96, except unit 5 (F0:24:F9:C6:D7:50), where the R^2 is 0.6 with a large visible difference in the two sensors. While unit 3 (F0:24:F9:C6:6B:D7) had an R^2 =0.95, it had some observations with discrepancies between the two sensors. None of the units seem to have outliers like Cecilia's units did, so I guess this is good? 
+
+### time series of channel a vs b
+```{r, include = FALSE}
+channel_plots_time_series <- lapply(1:length(mydata_split), FUN = function(i){
+  ggplot(mydata_split[[i]]) + 
+  geom_point(aes(x = DateTime, y = pm2_5_atm, color = "A")) +
+  geom_point(aes(x = DateTime, y = pm2_5_atm_b, color = "B")) +
+  ggtitle("PM2.5 per channel from 5/20/26 to 6/1/26", subtitle = unique(mydata_split[[i]]$mac_address)) + 
+  xlab("Observation Day") + ylab("PM2.5 Concentration (ug/m3)") +
+  scale_x_datetime(date_breaks="2 days") + 
+  #scale_color_manual(values=met.brewer("Java")) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.subtitle = element_text(hjust = 0.5, color="grey32")) +
+  theme(axis.title.y = element_text(vjust = 0.5)) +
+  guides(colour = guide_legend(title = "Channel", override.aes = list(size=5,stroke=2,alpha=1)))
+}) 
+```
+``` {r, fig.show="hold", out.width="50%", warning=FALSE, message=FALSE}
+indiv_plots <- lapply(channel_plots_time_series,plot)
+```
+
+
+---
+
+## PM2.5 Time Series for Co-Location Period 4/28-5/13
+
+I averaged the data for channels a and b for the colocation period for all sensors. I plotted the time series of the averaged PM2.5 (between channel a and b) for the four groups of sensors here, and inspected them for any outliers and inconsistencies between sensors.
+
+### unit averages plotted for set s1
+```{r, include=FALSE}
+#(correlation above 0.7) and selection of “best” sensor for those not 
+#performing well
+#avg time series plots for first set of sensors
+pm25_ave_plot_s1 <- ggplot() + 
+  ggtitle("Avg. PM2.5 for 4/28/26 to 5/13/26") +
+  geom_point(data = mydata_s1, aes(x=DateTime, y=pm25ave, color = as.factor(mac_address)), 
+             pch=1, size =0.3, alpha=0.5) +
+  xlab("Observation Day") + ylab("PM2.5 Concentration (ug/m3)") +
+  scale_x_datetime(date_breaks="2 days") + 
+  scale_color_manual(values=met.brewer("Java")) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.subtitle = element_text(hjust = 0.5, color="grey32")) +
+  theme(axis.title.y = element_text(vjust = 0.5)) +
+  guides(colour = guide_legend(title = "Mac address", override.aes = list(size=5,stroke=2,alpha=1)))
+```
+```{r}
+plot(pm25_ave_plot_s1)
+```
+
+First four units look good! 
+
+### unit averages plotted for set s2
+```{r, include=FALSE}
+#avg time series plots for second set of sensors
+pm25_ave_plot_s2 <- ggplot() + 
+  ggtitle("Avg. PM2.5 for 4/28/26 to 5/13/26") +
+  geom_point(data = mydata_s2, aes(x=DateTime, y=pm25ave, color = as.factor(mac_address)), 
+             pch=1, size =0.3, alpha=0.5) +
+  xlab("Observation Day") + ylab("PM2.5 Concentration (ug/m3)") +
+  scale_x_datetime(date_breaks="2 days") + 
+  scale_color_manual(values=met.brewer("Java")) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.subtitle = element_text(hjust = 0.5, color="grey32")) +
+  theme(axis.title.y = element_text(vjust = 0.5)) +
+  guides(colour = guide_legend(title = "Mac address",override.aes = list(size=5,stroke=2,alpha=1)))
+```
+```{r}
+plot(pm25_ave_plot_s2)
+```
+
+Unit 5 is clearly reading higher than the other two units in that group. 
+
+---
+
+## Average PM2.5 and neph by time
+
+### standardize times, fill missing values, arrange for merging
+```{r cal-PA-neph-code-1}
+# filter out erroneous measurements
+mydata <- mydata %>% filter(pm25ave<500)
+
+#Code from Calibration_PA_Neph.R in Healthy Schools
+newdatetime <- seq(floor_date(min(mydata$DateTime), "2 min"),
+                   ceiling_date(max(mydata$DateTime)), by = "2 min")
+newdatetime <- setDT(data.frame(DateTime = newdatetime))
+
+mydata_list <- split(mydata, by = "mac_address")
+
+mydata_1min_list <- lapply(mydata_list, FUN = function(x){
+  
+ test <- rbindlist(list(x, newdatetime), fill = T)
+ setkey(test, DateTime)
+ 
+ colvals = c("mac_address","firmware_ver","hardware")
+ 
+ test[, (colvals) := lapply(.SD, FUN = function(i) {unique(i)[2]}), 
+      .SDcols = colvals]
+ 
+ colvals = colnames(x)[sapply(x, is.numeric)]
+ 
+ test[, (colvals) := lapply(.SD, FUN = function(i){ 
+   na.approx(i, na.rm=F)}), 
+      .SDcols = colvals]
+ 
+ test = test[!is.na(`p_2_5_um` ), ]
+ 
+ test
+})
+
+mydata_1min <- rbindlist(mydata_1min_list)
+neph <- rbindlist(all_neph[1])
+
+setkey(mydata_1min, DateTime)
+setkey(neph, DateTime)
+
+mydata_1min <- neph[mydata_1min]
+```
+
+### regression on neph and PA data
+```{r lm-sensors1}
+lmval <- lm(data = mydata_1min, npm25_LFP ~ pm25ave + current_humidity)
+summary(lmval)
+```
+
+## Unit vs. Total Average PM2.5 for 4/28/26 to 5/13/26
+
+### plot regression of unit average vs all units average
+```{r}
+#create dt with time averaged PM2.5 & NPM2.5, rel humidity, mac address, and avg. PM2.5 per sensor
+mydata_1min_timeavg <- mydata_1min[ , list(timeavePM25 =  mean(pm25ave),
+                          timeaveNPM25 = mean(npm25_LFP),
+                          rel_humidity = current_humidity,
+                          mac_address=mac_address,
+                          pm25ave),
+                    by = c("DateTime")]
+#filter the NAs out
+mydata_1min_timeavg <- mydata_1min_timeavg %>% filter(is.na(timeaveNPM25)==FALSE)
+
+#split dt into each sensor
+mydata_1minave_split <- split(mydata_1min_timeavg, mydata_1min_timeavg$mac_address)
+
+#plot individual sensor against average
+myplots <- lapply(1:length(mydata_1minave_split), FUN = function(i){
+  ggplot(mydata_1minave_split[[i]], aes(x=timeavePM25, y=pm25ave))+ 
+  geom_point(pch=1)+ ggtitle("Sensor PM2.5 Compared to All Co-Located Sensors for 4/28 to 5/13",
+          subtitle = unique(mydata_1minave_split[[i]]$mac_address)) + 
+  geom_smooth(method="lm", color="black") +
+  theme(plot.title = element_text(hjust = 0.5)) + 
+  theme(plot.subtitle = element_text(hjust = 0.5, color="grey32")) +
+  xlab("Total PM2.5 average (ug/m3)") + ylab("Individual Sensor PM2.5 (ug/m3)") +
+  stat_cor(aes(label=after_stat(rr.label))
+  #, label.x=7, label.y=7
+  )
+})
+```
+```{r, fig.show="hold", out.width="50%", warning=FALSE, message=FALSE}
+indiv_plots <- lapply(myplots,plot)
+```
+
+---
+
+## Comparing the nephelometer to PA data 4/28 - 5/13
+
+### plot neph vs PA averages 
+```{r}
+mydata <- mydata %>% filter(pm25ave<500)
+
+#Correct one
+pm25_neph_428_513 <- ggplot() + 
+  ggtitle("Avg. PM2.5 for 4/28/26 to 5/13/26", subtitle = "Nephelometer (green) and PA (pink)") +
+  geom_point(data = mydata, aes(x=DateTime, y=pm25ave), 
+             pch=1, size =0.5, color="magenta", alpha=0.15) +
+  geom_point(data = all_neph[[1]], aes(x=DateTime, y=npm25_LFP), 
+            pch=2, size =0.5, color="limegreen") +
+  xlab("Observation Day") + ylab("PM2.5 Concentration (ug/m3)") +
+  scale_x_datetime(date_breaks="1 day") + 
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.subtitle = element_text(hjust = 0.5, color="grey32")) +
+  theme(axis.title.y = element_text(vjust = 0.5)) +
+  theme(legend.position = "right")
+
+plot(pm25_neph_428_513)
+```
+
+# 5/13/26 - 5/20/2026 Co-Location
+
+## Load and process PA files
+
+### load 5/13 - 5/20 files
+```{r, message=FALSE, warning=FALSE}
+# List of CSV files that we want from this folder (CHANGE THIS PER FOLDER)
+all_files <- list.files(here(), recursive = TRUE)
+csv_files <- all_files[grepl("^CoLo2_13May-20May/.*/.*\\.csv$", all_files)]
+unique_sensors <- unique(get_sensor_name(csv_files))
+
+#merge all the data for selected colocation period
+mydatalist <- lapply(1:length(csv_files), FUN = function(i){
+  read_and_name_csv(csv_files[i])
+})
+mydata <- rbindlist(mydatalist)
+
+#parse date/time
+mydata$DateTime <- as_datetime(mydata$UTCDateTime,tz="US/Pacific")
+```
+
+### process chanel averages
+```{r,include=FALSE}
+# average channel a and channel b
+mydata[, pm25ave := rowMeans(.SD), 
+       by = c("mac_address", "UTCDateTime"), 
+       .SDcols = c("pm2_5_atm","pm2_5_atm_b") ]
+
+# create separate table that is just week avg & sd data, mac address
+myavemac <- mydata[ ,list(weekavepm25 =  mean(pm25ave),
+                          weeksdpm25 = sd(pm25ave) ), 
+                    by = c("mac_address")]
+
+#average PM2.5 data over time -- TO-DO, THE BELOW DIDN'T WORK
+#sensoravemac <- mydata[ ,list(mac_address = mac_address,
+#                          pm25ave =  pm25ave,
+#                          total_pm25ave = mean(pm25ave)), 
+#                    by = c("UTCDateTime")]
+```
+
+Sensors (by mac address) used in this co-location period:
+```{r}
+print(unique_sensors)
+```
+
+```{r, include=FALSE}
+#parse sensoravemac data
+#sensoravemac$DateTime <- as_datetime(sensoravemac$UTCDateTime,tz="US/Pacific")
+```
+
+### split data into groups
+```{r, include=FALSE}
+#split data into two groups of sensors to plot multiple sensors at once
+mydata_split <- split(mydata, f= mydata$mac_address) #splitting into indiv sensors
+mydata_s1 <- lapply(mydata_split[1:4],rbind) 
+mydata_s1 <- rbindlist(mydata_s1)
+
+mydata_s2 <- lapply(mydata_split[5:9],rbind)
+mydata_s2 <- rbindlist(mydata_s2)
+
+# split avg sensoravemac data into groups of sensors (4 or 5)
+#sensoravemac_split <- split(sensoravemac, f= sensoravemac$mac_address)
+#sensoravemac_s1 <- lapply(sensoravemac_split[1:5],rbind)
+#sensoravemac_s1 <- rbindlist(sensoravemac_s1)
+
+#sensoravemac_s2 <- lapply(sensoravemac_split[6:10],rbind)
+#sensoravemac_s2 <- rbindlist(sensoravemac_s2)
+
+#sensoravemac_s3 <- lapply(sensoravemac_split[11:14],rbind)
+#sensoravemac_s3 <- rbindlist(sensoravemac_s3)
+```
+
+---
+
+## PM2.5 Channel Agreement: Individual Sensors for 5/13-5/20
+
+To examine whether the channels agree with each other on individual sensors, I created plots of channel a vs. channel b., and included a regression line and the R^2 value.
+
+### plot regression of channel a vs b
+```{r, include=FALSE}
+myplots <- lapply(1:length(mydata_split), FUN = function(i){
+  ggplot(mydata_split[[i]], aes(x=pm2_5_atm, y=pm2_5_atm_b))+ 
+  geom_point(pch=1)+ ggtitle("PM2.5 Channels for 5/13/26 to 5/20/26", subtitle = unique(mydata_split[[i]]$mac_address)) + 
+  geom_smooth(method="lm", color="black") +
+  theme(plot.title = element_text(hjust = 0.5)) + 
+  theme(plot.subtitle = element_text(hjust = 0.5, color="grey32")) +
+  xlab("pm2_5_atm (ug/m3)") + ylab("pm2_5_atm_b (ug/m3)") +
+  stat_cor(aes(label=after_stat(rr.label))
+  #, label.x=5, label.y=8
+  )
+}) 
+```
+``` {r, include=FALSE, echo=FALSE}
+indiv_plots <- lapply(myplots,plot)
+```
+
+All the units have R^2 from 0.95 to 0.97, except unit 9 (F0_24_F9_C6_C7_8F), where the R^2 is 0.0075. This appears to be due to two high outliers on one of the sensors - let's try filtering those out and see if that fixes things. 
+
+### filter out outliers for bad sensors, rerun plots
+```{r, include=FALSE}
+### Cecilia example for what she did for a bad unit
+mydata_split[[9]] <- mydata_split[[9]] %>% filter(pm2_5_atm<500)
+mydata_split[[9]] <- mydata_split[[9]] %>% filter(pm2_5_atm_b<500)
+
+
+#Re-run plots
+myplots <- lapply(1:length(mydata_split), FUN = function(i){
+  ggplot(mydata_split[[i]], aes(x=pm2_5_atm, y=pm2_5_atm_b))+ 
+  geom_point(pch=1)+ ggtitle("PM2.5 Channels for 5/13/26 to 5/20/26", subtitle = unique(mydata_split[[i]]$mac_address)) + 
+  geom_smooth(method="lm", color="black") +
+  theme(plot.title = element_text(hjust = 0.5)) + 
+  theme(plot.subtitle = element_text(hjust = 0.5, color="grey32")) +
+  xlab("pm2_5_atm (ug/m3)") + ylab("pm2_5_atm_b (ug/m3)") +
+  stat_cor(aes(label=after_stat(rr.label)), label.x=25, label.y=8)
+})
+```
+```{r, fig.show="hold", out.width="50%", warning=FALSE, message=FALSE}
+indiv_plots <- lapply(myplots,plot)
+```
+
+This fixes things right up, with unit 9 now having a R^2 of 0.96. Looking good! 
+
+```{r, include= FALSE}
+#let's remake the s1 and s2 groups now that we've filtered out those outliers. 
+mydata_s1 <- lapply(mydata_split[1:4],rbind) 
+mydata_s1 <- rbindlist(mydata_s1)
+
+mydata_s2 <- lapply(mydata_split[5:9],rbind)
+mydata_s2 <- rbindlist(mydata_s2)
+```
+
+---
+
+## PM2.5 Time Series for Co-Location Period 5/13-5/20
+
+I averaged the data for channels a and b for the colocation period for all sensors. I plotted the time series of the averaged PM2.5 (between channel a and b) for the four groups of sensors here, and inspected them for any outliers and inconsistencies between sensors.
+
+### unit averages plotted for set s1
+```{r, include=FALSE}
+#(correlation above 0.7) and selection of “best” sensor for those not 
+#performing well
+#avg time series plots for first set of sensors
+pm25_ave_plot_s1 <- ggplot() + 
+  ggtitle("Avg. PM2.5 for 5/13/26 to 5/20/26") +
+  geom_point(data = mydata_s1, aes(x=DateTime, y=pm25ave, color = as.factor(mac_address)), 
+             pch=1, size =0.3, alpha=0.5) +
+  xlab("Observation Day") + ylab("PM2.5 Concentration (ug/m3)") +
+  scale_x_datetime(date_breaks="2 days") + 
+  scale_color_manual(values=met.brewer("Java")) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.subtitle = element_text(hjust = 0.5, color="grey32")) +
+  theme(axis.title.y = element_text(vjust = 0.5)) +
+  guides(colour = guide_legend(title = "Mac address", override.aes = list(size=5,stroke=2,alpha=1)))
+```
+```{r}
+plot(pm25_ave_plot_s1)
+```
+
+First four units look good! It looks like there were some times where 4b:b8 were on while the others weren't - maybe a power failure on a specific outlet? 
+
+### unit averages plotted for set s2
+```{r, include=FALSE}
+#avg time series plots for second set of sensors
+pm25_ave_plot_s2 <- ggplot() + 
+  ggtitle("Avg. PM2.5 for 5/13/26 to 5/20/26") +
+  geom_point(data = mydata_s2, aes(x=DateTime, y=pm25ave, color = as.factor(mac_address)), 
+             pch=1, size =0.3, alpha=0.5) +
+  xlab("Observation Day") + ylab("PM2.5 Concentration (ug/m3)") +
+  scale_x_datetime(date_breaks="2 days") + 
+  scale_color_manual(values=met.brewer("Java")) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.subtitle = element_text(hjust = 0.5, color="grey32")) +
+  theme(axis.title.y = element_text(vjust = 0.5)) +
+  guides(colour = guide_legend(title = "Mac address",override.aes = list(size=5,stroke=2,alpha=1)))
+```
+```{r}
+plot(pm25_ave_plot_s2)
+```
+
+Looks good, some similarly missing data for some units. Not sure what happened there. 
+
+---
+
+## Average PM2.5 and neph by time
+
+### standardize times, fill missing values, arrange for merging
+```{r cal-PA-neph-code-2}
+# filter out erroneous measurements
+mydata <- mydata %>% filter(pm25ave<300)
+
+#Code from Calibration_PA_Neph.R in Healthy Schools
+newdatetime <- seq(floor_date(min(mydata$DateTime), "2 min"),
+                   ceiling_date(max(mydata$DateTime)), by = "2 min")
+newdatetime <- setDT(data.frame(DateTime = newdatetime))
+
+mydata_list <- split(mydata, by = "mac_address")
+
+mydata_1min_list <- lapply(mydata_list, FUN = function(x){
+  
+ test <- rbindlist(list(x, newdatetime), fill = T)
+ setkey(test, DateTime)
+ 
+ colvals = c("mac_address","firmware_ver","hardware")
+ 
+ test[, (colvals) := lapply(.SD, FUN = function(i) {unique(i)[2]}), 
+      .SDcols = colvals]
+ 
+ colvals = colnames(x)[sapply(x, is.numeric)]
+ 
+ test[, (colvals) := lapply(.SD, FUN = function(i){ 
+   na.approx(i, na.rm=F)}), 
+      .SDcols = colvals]
+ 
+ test = test[!is.na(`p_2_5_um` ), ]
+ 
+ test
+})
+
+mydata_1min <- rbindlist(mydata_1min_list)
+neph <- rbindlist(all_neph[2])
+
+setkey(mydata_1min, DateTime)
+setkey(neph, DateTime)
+
+mydata_1min <- neph[mydata_1min]
+```
+
+### regression on neph and PA data
+```{r lm-sensors2}
+lmval <- lm(data = mydata_1min, npm25_LFP ~ pm25ave + current_humidity)
+summary(lmval)
+```
+
+## Unit vs. Total Average PM2.5 for 5/13/26 to 5/20/26
+
+### plot regression of unit average vs all units average
+```{r}
+#create dt with time averaged PM2.5 & NPM2.5, rel humidity, mac address, and avg. PM2.5 per sensor
+mydata_1min_timeavg <- mydata_1min[ , list(timeavePM25 =  mean(pm25ave),
+                          timeaveNPM25 = mean(npm25_LFP),
+                          rel_humidity = current_humidity,
+                          mac_address=mac_address,
+                          pm25ave),
+                    by = c("DateTime")]
+#filter the NAs out
+mydata_1min_timeavg <- mydata_1min_timeavg %>% filter(is.na(timeaveNPM25)==FALSE)
+
+#split dt into each sensor
+mydata_1minave_split <- split(mydata_1min_timeavg, mydata_1min_timeavg$mac_address)
+
+#plot individual sensor against average
+myplots <- lapply(1:length(mydata_1minave_split), FUN = function(i){
+  ggplot(mydata_1minave_split[[i]], aes(x=timeavePM25, y=pm25ave))+ 
+  geom_point(pch=1)+ ggtitle("Sensor PM2.5 Compared to All Co-Located Sensors for 5/13 to 5/20",
+          subtitle = unique(mydata_1minave_split[[i]]$mac_address)) + 
+  geom_smooth(method="lm", color="black") +
+  theme(plot.title = element_text(hjust = 0.5)) + 
+  theme(plot.subtitle = element_text(hjust = 0.5, color="grey32")) +
+  xlab("Total PM2.5 average (ug/m3)") + ylab("Individual Sensor PM2.5 (ug/m3)") +
+  stat_cor(aes(label=after_stat(rr.label))
+  #, label.x=7, label.y=7
+  )
+})
+```
+```{r, fig.show="hold", out.width="50%", warning=FALSE, message=FALSE}
+indiv_plots <- lapply(myplots,plot)
+```
+
+---
+
+## Comparing the nephelometer to PA data 5/13 - 5/20
+
+### plot neph vs PA averages 
+```{r}
+
+mydata <- mydata %>% filter(pm25ave<500)
+
+#Correct one
+pm25_neph_513_520 <- ggplot() + 
+  ggtitle("Avg. PM2.5 for 5/13/26 to 5/20/26", subtitle = "Nephelometer (green) and PA (pink)") +
+  geom_point(data = mydata, aes(x=DateTime, y=pm25ave), 
+             pch=1, size =0.5, color="magenta", alpha=0.15) +
+  geom_point(data = all_neph[[2]], aes(x=DateTime, y=npm25_LFP), 
+            pch=2, size =0.5, color="limegreen") +
+  xlab("Observation Day") + ylab("PM2.5 Concentration (ug/m3)") +
+  scale_x_datetime(date_breaks="4 day") + 
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.subtitle = element_text(hjust = 0.5, color="grey32")) +
+  theme(axis.title.y = element_text(vjust = 0.5)) +
+  theme(legend.position = "right")
+
+plot(pm25_neph_513_520) 
+```
+
+# 5/20/26 - 6/01/2026 Co-Location
+
+## Load and process PA files
+
+### load 5/20 - 6/1 files
+```{r, message=FALSE, warning=FALSE}
+# List of CSV files that we want from this folder (CHANGE THIS PER FOLDER)
+all_files <- list.files(here(), recursive = TRUE)
+csv_files <- all_files[grepl("^CoLo3_20May-1Jun/.*/.*\\.csv$", all_files)]
+unique_sensors <- unique(get_sensor_name(csv_files))
+
+#merge all the data for selected colocation period
+mydatalist <- lapply(1:length(csv_files), FUN = function(i){
+  read_and_name_csv(csv_files[i])
+})
+mydata <- rbindlist(mydatalist)
+
+#parse date/time
+mydata$DateTime <- as_datetime(mydata$UTCDateTime,tz="US/Pacific")
+```
+
+### process chanel averages
+```{r,include=FALSE}
+# average channel a and channel b
+mydata[, pm25ave := rowMeans(.SD), 
+       by = c("mac_address", "UTCDateTime"), 
+       .SDcols = c("pm2_5_atm","pm2_5_atm_b") ]
+
+# create separate table that is just week avg & sd data, mac address
+myavemac <- mydata[ ,list(weekavepm25 =  mean(pm25ave),
+                          weeksdpm25 = sd(pm25ave) ), 
+                    by = c("mac_address")]
+
+#average PM2.5 data over time -- TO-DO, THE BELOW DIDN'T WORK
+#sensoravemac <- mydata[ ,list(mac_address = mac_address,
+#                          pm25ave =  pm25ave,
+#                          total_pm25ave = mean(pm25ave)), 
+#                    by = c("UTCDateTime")]
+```
+
+Sensors (by mac address) used in this co-location period:
+```{r}
+print(unique_sensors)
+```
+
+```{r, include=FALSE}
+#parse sensoravemac data
+#sensoravemac$DateTime <- as_datetime(sensoravemac$UTCDateTime,tz="US/Pacific")
+```
+
+### split data into groups
+```{r, include=FALSE}
+#split data into two groups of sensors to plot multiple sensors at once
+mydata_split <- split(mydata, f= mydata$mac_address) #splitting into indiv sensors
+mydata_s1 <- lapply(mydata_split[1:5],rbind)
+mydata_s1 <- rbindlist(mydata_s1)
+
+mydata_s2 <- lapply(mydata_split[6:10],rbind)
+mydata_s2 <- rbindlist(mydata_s2)
+
+# split avg sensoravemac data into groups of sensors (4 or 5)
+#sensoravemac_split <- split(sensoravemac, f= sensoravemac$mac_address)
+#sensoravemac_s1 <- lapply(sensoravemac_split[1:5],rbind)
+#sensoravemac_s1 <- rbindlist(sensoravemac_s1)
+
+#sensoravemac_s2 <- lapply(sensoravemac_split[6:10],rbind)
+#sensoravemac_s2 <- rbindlist(sensoravemac_s2)
+
+#sensoravemac_s3 <- lapply(sensoravemac_split[11:14],rbind)
+#sensoravemac_s3 <- rbindlist(sensoravemac_s3)
+```
+
+---
+
+## PM2.5 Channel Agreement: Individual Sensors for 5/20-6/1
+
+To examine whether the channels agree with each other on individual sensors, I created plots of channel a vs. channel b., and included a regression line and the R^2 value.
+
+### plot regression of channel a vs b
+```{r, include=FALSE}
+myplots <- lapply(1:length(mydata_split), FUN = function(i){
+  ggplot(mydata_split[[i]], aes(x=pm2_5_atm, y=pm2_5_atm_b))+ 
+  geom_point(pch=1)+ ggtitle("PM2.5 Channels for 5/20/26 to 6/1/26", subtitle = unique(mydata_split[[i]]$mac_address)) + 
+  geom_smooth(method="lm", color="black") +
+  theme(plot.title = element_text(hjust = 0.5)) + 
+  theme(plot.subtitle = element_text(hjust = 0.5, color="grey32")) +
+  xlab("pm2_5_atm (ug/m3)") + ylab("pm2_5_atm_b (ug/m3)") +
+  stat_cor(aes(label=after_stat(rr.label))
+  #, label.x=5, label.y=8
+  )
+}) 
+```
+``` {r, fig.show="hold", out.width="50%", warning=FALSE, message=FALSE}
+indiv_plots <- lapply(myplots,plot)
+```
+
+Wow, more issues on this batch than typical. Unit f0:24:f9:c6:91:c0 has an R^2 of 0.59, it looks like many of the points are along a good trend, so I'm interested in looking at a time series of the readings and see if one sensor went bad at a certain point through the colocation. 
+
+Next problematic unit is f0:24:f9:c6:c8:85, which has about 166 readings on sensor b that are well over 250ug/m3, with many nearing 3500 ug/m3. This was a string of bad readings from 5/23 at 0601 to 1126. Even if we filter out all readings over 250ug/m3, we get an R^2 of 0.59, so definetely some big issues there. 
+
+```{r, fig.show="hold", out.width="50%", warning=FALSE, message=FALSE}
+f0_24_f9_c6_c8_85_high <- mydata |> 
+  filter(mac_address == "f0:24:f9:c6:c8:85") |> 
+  filter(pm2_5_atm_b > 250)
+
+f0_24_f9_c6_c8_85_low <- mydata |> 
+  filter(mac_address == "f0:24:f9:c6:c8:85") |> 
+  filter(pm2_5_atm_b < 250)
+
+ggplot(f0_24_f9_c6_c8_85_low, aes(x=pm2_5_atm, y=pm2_5_atm_b))+ 
+  geom_point(pch=1)+ ggtitle("PM2.5 Channels for 5/20/26 to 6/1/26, >250um/m3 filtered out", subtitle = unique(f0_24_f9_c6_c8_85_low$mac_address)) + 
+  geom_smooth(method="lm", color="black") +
+  theme(plot.title = element_text(hjust = 0.5)) + 
+  theme(plot.subtitle = element_text(hjust = 0.5, color="grey32")) +
+  xlab("pm2_5_atm (ug/m3)") + ylab("pm2_5_atm_b (ug/m3)") +
+  stat_cor(aes(label=after_stat(rr.label))
+  #, label.x=5, label.y=8
+  )
+```
+
+Unit f0:24:f9:c6:e4:9e has an R^2 of 0.9, which is lower than typical, and some visible deviations from the A channel. These deviations center around 5/23 at 0526, which is about a half hour before one of the channels on a different unit went off the rails... interesting. EXCLUDE THIS TIME PERIOD AND RERUN??
+
+Otherwise, the 8 remaining units have R^2 from 0.9 to 0.96, with many of them tending to be more around the 0.92 range. Not the best, but they should be fine. 
+
+### time series of channel a vs b
+```{r, include = FALSE}
+channel_plots_time_series <- lapply(1:length(mydata_split), FUN = function(i){
+  ggplot(mydata_split[[i]]) + 
+  geom_point(aes(x = DateTime, y = pm2_5_atm, color = "A")) +
+  geom_point(aes(x = DateTime, y = pm2_5_atm_b, color = "B")) +
+  ggtitle("PM2.5 per channel from 5/20/26 to 6/1/26", subtitle = unique(mydata_split[[i]]$mac_address)) + 
+  xlab("Observation Day") + ylab("PM2.5 Concentration (ug/m3)") +
+  scale_x_datetime(date_breaks="2 days") + 
+  #scale_color_manual(values=met.brewer("Java")) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.subtitle = element_text(hjust = 0.5, color="grey32")) +
+  theme(axis.title.y = element_text(vjust = 0.5)) +
+  guides(colour = guide_legend(title = "Channel", override.aes = list(size=5,stroke=2,alpha=1)))
+}) 
+```
+``` {r, fig.show="hold", out.width="50%", warning=FALSE, message=FALSE}
+indiv_plots <- lapply(channel_plots_time_series,plot)
+```
+
+Looking at unit f0:24:f9:c6:91:c0, it does look like after 5/23 at about 0600 it started having massive random spikes on channel A, while otherwise being mostly well correlated. With these spikes happening at more or less random, I don't think it can be reliably used. 
+
+``` {r, fig.show="hold", out.width="50%", warning=FALSE, message=FALSE}
+ggplot(f0_24_f9_c6_c8_85_low) + 
+  geom_point(aes(x = DateTime, y = pm2_5_atm, color = "A")) +
+  geom_point(aes(x = DateTime, y = pm2_5_atm_b, color = "B")) +
+  ggtitle("PM2.5 per channel from 5/20/26 to 6/1/26, >250um/m3 filtered out", subtitle = unique(f0_24_f9_c6_c8_85_low$mac_address)) + 
+  xlab("Observation Day") + ylab("PM2.5 Concentration (ug/m3)") +
+  scale_x_datetime(date_breaks="2 days") + 
+  #scale_color_manual(values=met.brewer("Java")) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.subtitle = element_text(hjust = 0.5, color="grey32")) +
+  theme(axis.title.y = element_text(vjust = 0.5)) +
+  guides(colour = guide_legend(title = "Channel", override.aes = list(size=5,stroke=2,alpha=1)))
+```
+
+Here's also an additional time series for the unit with crazy high readings, but with those filtered out. Still looking like the A channel is having some issues. 
+
+### Reconstruction of sets with defective units removed
+```{r, include = FALSE}
+mydata_s1 <- lapply(mydata_split[c(1, 2, 3, 5)],rbind)
+mydata_s1 <- rbindlist(mydata_s1)
+
+mydata_s2 <- lapply(mydata_split[7:10],rbind)
+mydata_s2 <- rbindlist(mydata_s2)
+```
+
+---
+
+## PM2.5 Time Series for Co-Location Period 5/20-6/1
+
+I averaged the data for channels a and b for the colocation period for all viable sensors. I plotted the time series of the averaged PM2.5 (between channel a and b) for the groups of sensors here, and inspected them for any outliers and inconsistencies between sensors.
+
+### unit averages plotted for set s1
+```{r, include=FALSE}
+#(correlation above 0.7) and selection of “best” sensor for those not 
+#performing well
+#avg time series plots for first set of sensors
+pm25_ave_plot_s1 <- ggplot() + 
+  ggtitle("Avg. PM2.5 for 5/20/26 to 6/1/26") +
+  geom_point(data = mydata_s1, aes(x=DateTime, y=pm25ave, color = as.factor(mac_address)), 
+             pch=1, size =0.3, alpha=0.5) +
+  xlab("Observation Day") + ylab("PM2.5 Concentration (ug/m3)") +
+  scale_x_datetime(date_breaks="2 days") + 
+  scale_color_manual(values=met.brewer("Java")) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.subtitle = element_text(hjust = 0.5, color="grey32")) +
+  theme(axis.title.y = element_text(vjust = 0.5)) +
+  guides(colour = guide_legend(title = "Mac address", override.aes = list(size=5,stroke=2,alpha=1)))
+```
+```{r}
+plot(pm25_ave_plot_s1)
+```
+
+
+### unit averages plotted for set s2
+```{r, include=FALSE}
+#avg time series plots for second set of sensors
+pm25_ave_plot_s2 <- ggplot() + 
+  ggtitle("Avg. PM2.5 for 5/20/26 to 6/1/26") +
+  geom_point(data = mydata_s2, aes(x=DateTime, y=pm25ave, color = as.factor(mac_address)), 
+             pch=1, size =0.3, alpha=0.5) +
+  xlab("Observation Day") + ylab("PM2.5 Concentration (ug/m3)") +
+  scale_x_datetime(date_breaks="2 days") + 
+  scale_color_manual(values=met.brewer("Java")) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.subtitle = element_text(hjust = 0.5, color="grey32")) +
+  theme(axis.title.y = element_text(vjust = 0.5)) +
+  guides(colour = guide_legend(title = "Mac address",override.aes = list(size=5,stroke=2,alpha=1)))
+```
+```{r}
+plot(pm25_ave_plot_s2)
+```
+
+---
+
+## Average PM2.5 and neph by time
+
+### standardize times, fill missing values, arrange for merging
+```{r cal-PA-neph-code-3}
+
+#Code from Calibration_PA_Neph.R in Healthy Schools
+newdatetime <- seq(floor_date(min(mydata$DateTime), "2 min"),
+                   ceiling_date(max(mydata$DateTime)), by = "2 min")
+newdatetime <- setDT(data.frame(DateTime = newdatetime))
+
+mydata_list <- split(mydata, by = "mac_address")
+
+mydata_1min_list <- lapply(mydata_list, FUN = function(x){
+  
+ test <- rbindlist(list(x, newdatetime), fill = T)
+ setkey(test, DateTime)
+ 
+ colvals = c("mac_address","firmware_ver","hardware")
+ 
+ test[, (colvals) := lapply(.SD, FUN = function(i) {unique(i)[2]}), 
+      .SDcols = colvals]
+ 
+ colvals = colnames(x)[sapply(x, is.numeric)]
+ 
+ test[, (colvals) := lapply(.SD, FUN = function(i){ 
+   na.approx(i, na.rm=F)}), 
+      .SDcols = colvals]
+ 
+ test = test[!is.na(`p_2_5_um` ), ]
+ 
+ test
+})
+
+mydata_1min <- rbindlist(mydata_1min_list[c(1:3, 5, 7:10)])
+neph <- rbindlist(all_neph[3])
+
+setkey(mydata_1min, DateTime)
+setkey(neph, DateTime)
+
+mydata_1min <- neph[mydata_1min]
+```
+
+### regression on neph and PA data
+```{r lm-sensors3}
+lmval <- lm(data = mydata_1min, npm25_LFP ~ pm25ave + current_humidity)
+summary(lmval)
+```
+
+## Unit vs. Total Average PM2.5 for 5/20/26 to 6/1/26
+
+### plot regression of unit average vs all units average
+```{r}
+#create dt with time averaged PM2.5 & NPM2.5, rel humidity, mac address, and avg. PM2.5 per sensor
+mydata_1min_timeavg <- mydata_1min[ , list(timeavePM25 =  mean(pm25ave),
+                          timeaveNPM25 = mean(npm25_LFP),
+                          rel_humidity = current_humidity,
+                          mac_address=mac_address,
+                          pm25ave),
+                    by = c("DateTime")]
+#filter the NAs out
+mydata_1min_timeavg <- mydata_1min_timeavg %>% filter(is.na(timeaveNPM25)==FALSE)
+
+#split dt into each sensor
+mydata_1minave_split <- split(mydata_1min_timeavg, mydata_1min_timeavg$mac_address)
+
+#plot individual sensor against average
+myplots <- lapply(1:length(mydata_1minave_split), FUN = function(i){
+  ggplot(mydata_1minave_split[[i]], aes(x=timeavePM25, y=pm25ave))+ 
+  geom_point(pch=1)+ ggtitle("Sensor PM2.5 Compared to Well-Performing Co-Located Sensors for 5/20 to 6/1",
+          subtitle = unique(mydata_1minave_split[[i]]$mac_address)) + 
+  geom_smooth(method="lm", color="black") +
+  theme(plot.title = element_text(hjust = 0.5)) + 
+  theme(plot.subtitle = element_text(hjust = 0.5, color="grey32")) +
+  xlab("Total PM2.5 average (ug/m3)") + ylab("Individual Sensor PM2.5 (ug/m3)") +
+  stat_cor(aes(label=after_stat(rr.label))
+  #, label.x=7, label.y=7
+  )
+})
+```
+```{r, fig.show="hold", out.width="50%", warning=FALSE, message=FALSE}
+indiv_plots <- lapply(myplots,plot)
+```
+
+---
+
+## Comparing the nephelometer to PA data 5/20 - 6/1
+
+### plot neph vs PA averages 
+```{r}
+
+mydata <- mydata %>% filter(pm25ave<500)
+
+#Correct one
+pm25_neph_513_520 <- ggplot() + 
+  ggtitle("Avg. PM2.5 for 5/20/26 to 6/1/26", subtitle = "Nephelometer (green) and PA (pink)") +
+  geom_point(data = mydata_1min, aes(x=DateTime, y=pm25ave), 
+             pch=1, size =0.5, color="magenta", alpha=0.15) +
+  geom_point(data = all_neph[[3]], aes(x=DateTime, y=npm25_LFP), 
+            pch=2, size =0.5, color="limegreen") +
+  xlab("Observation Day") + ylab("PM2.5 Concentration (ug/m3)") +
+  scale_x_datetime(date_breaks="4 day") + 
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.subtitle = element_text(hjust = 0.5, color="grey32")) +
+  theme(axis.title.y = element_text(vjust = 0.5)) +
+  theme(legend.position = "right")
+
+plot(pm25_neph_513_520) 
+```
+
+# Troubleshooting Location (lo4)
+
+## Load and process PA files
+
+### load lo4 files
+```{r, message=FALSE, warning=FALSE}
+# List of CSV files that we want from this folder (CHANGE THIS PER FOLDER)
+all_files <- list.files(here(), recursive = TRUE)
+csv_files <- all_files[grepl("^Lo4/.*/.*\\.csv$", all_files)]
+unique_sensors <- unique(get_sensor_name(csv_files))
+
+#merge all the data for selected colocation period
+mydatalist <- lapply(1:length(csv_files), FUN = function(i){
+  read_and_name_csv(csv_files[i])
+})
+mydata <- rbindlist(mydatalist)
+
+#parse date/time
+mydata$DateTime <- as_datetime(mydata$UTCDateTime,tz="US/Pacific")
+```
+
+### process chanel averages
+```{r,include=FALSE}
+# average channel a and channel b
+mydata[, pm25ave := rowMeans(.SD), 
+       by = c("mac_address", "UTCDateTime"), 
+       .SDcols = c("pm2_5_atm","pm2_5_atm_b") ]
+
+# create separate table that is just week avg & sd data, mac address
+myavemac <- mydata[ ,list(weekavepm25 =  mean(pm25ave),
+                          weeksdpm25 = sd(pm25ave) ), 
+                    by = c("mac_address")]
+
+#average PM2.5 data over time -- TO-DO, THE BELOW DIDN'T WORK
+#sensoravemac <- mydata[ ,list(mac_address = mac_address,
+#                          pm25ave =  pm25ave,
+#                          total_pm25ave = mean(pm25ave)), 
+#                    by = c("UTCDateTime")]
+```
+
+Sensors (by mac address) used in this co-location period:
+```{r}
+print(unique_sensors)
+```
+
+```{r, include=FALSE}
+#parse sensoravemac data
+#sensoravemac$DateTime <- as_datetime(sensoravemac$UTCDateTime,tz="US/Pacific")
+```
+
+### split data into groups
+```{r, include=FALSE}
+#split data into two groups of sensors to plot multiple sensors at once
+mydata_split <- split(mydata, f= mydata$mac_address) #splitting into indiv sensors
+mydata_s1 <- lapply(mydata_split[1:2],rbind)
+mydata_s1 <- rbindlist(mydata_s1)
+
+# split avg sensoravemac data into groups of sensors (4 or 5)
+#sensoravemac_split <- split(sensoravemac, f= sensoravemac$mac_address)
+#sensoravemac_s1 <- lapply(sensoravemac_split[1:5],rbind)
+#sensoravemac_s1 <- rbindlist(sensoravemac_s1)
+
+#sensoravemac_s2 <- lapply(sensoravemac_split[6:10],rbind)
+#sensoravemac_s2 <- rbindlist(sensoravemac_s2)
+
+#sensoravemac_s3 <- lapply(sensoravemac_split[11:14],rbind)
+#sensoravemac_s3 <- rbindlist(sensoravemac_s3)
+```
+
+---
+
+## PM2.5 Channel Agreement: Individual Sensors for 5/20-6/1
+
+To examine whether the channels agree with each other on individual sensors, I created plots of channel a vs. channel b., and included a regression line and the R^2 value.
+
+### plot regression of channel a vs b
+```{r, include=FALSE}
+myplots <- lapply(1:length(mydata_split), FUN = function(i){
+  ggplot(mydata_split[[i]], aes(x=pm2_5_atm, y=pm2_5_atm_b))+ 
+  geom_point(pch=1)+ ggtitle("PM2.5 Channels for lo4", subtitle = unique(mydata_split[[i]]$mac_address)) + 
+  geom_smooth(method="lm", color="black") +
+  theme(plot.title = element_text(hjust = 0.5)) + 
+  theme(plot.subtitle = element_text(hjust = 0.5, color="grey32")) +
+  xlab("pm2_5_atm (ug/m3)") + ylab("pm2_5_atm_b (ug/m3)") +
+  stat_cor(aes(label=after_stat(rr.label))
+  #, label.x=5, label.y=8
+  )
+}) 
+```
+``` {r, fig.show="hold", out.width="50%", warning=FALSE, message=FALSE}
+indiv_plots <- lapply(myplots,plot)
+```
+
+commentary or whatever
+
+```{r, fig.show="hold", out.width="50%", warning=FALSE, message=FALSE}
+f0_24_f9_c6_c8_85_high <- mydata |> 
+  filter(mac_address == "f0:24:f9:c6:c8:85") |> 
+  filter(pm2_5_atm > 250)
+
+f0_24_f9_c6_c8_85_low <- mydata |> 
+  filter(mac_address == "f0:24:f9:c6:c8:85") |> 
+  filter(pm2_5_atm < 250)
+
+ggplot(f0_24_f9_c6_c8_85_low, aes(x=pm2_5_atm, y=pm2_5_atm_b))+ 
+  geom_point(pch=1)+ ggtitle("PM2.5 Channels for 5/20/26 to 6/1/26, >250um/m3 filtered out", subtitle = unique(f0_24_f9_c6_c8_85_low$mac_address)) + 
+  geom_smooth(method="lm", color="black") +
+  theme(plot.title = element_text(hjust = 0.5)) + 
+  theme(plot.subtitle = element_text(hjust = 0.5, color="grey32")) +
+  xlab("pm2_5_atm (ug/m3)") + ylab("pm2_5_atm_b (ug/m3)") +
+  stat_cor(aes(label=after_stat(rr.label))
+  #, label.x=5, label.y=8
+  )
+```
+
+
+
+### time series of channel a vs b
+```{r, include = FALSE}
+channel_plots_time_series <- lapply(1:length(mydata_split), FUN = function(i){
+  ggplot(mydata_split[[i]]) + 
+  geom_point(aes(x = DateTime, y = pm2_5_atm, color = "A")) +
+  geom_point(aes(x = DateTime, y = pm2_5_atm_b, color = "B")) +
+  ggtitle("PM2.5 per channel from 5/20/26 to 6/1/26", subtitle = unique(mydata_split[[i]]$mac_address)) + 
+  xlab("Observation Day") + ylab("PM2.5 Concentration (ug/m3)") +
+  scale_x_datetime(date_breaks="2 days") + 
+  #scale_color_manual(values=met.brewer("Java")) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.subtitle = element_text(hjust = 0.5, color="grey32")) +
+  theme(axis.title.y = element_text(vjust = 0.5)) +
+  guides(colour = guide_legend(title = "Channel", override.aes = list(size=5,stroke=2,alpha=1)))
+}) 
+```
+``` {r, fig.show="hold", out.width="50%", warning=FALSE, message=FALSE}
+indiv_plots <- lapply(channel_plots_time_series,plot)
+```
+
+
+``` {r, fig.show="hold", out.width="50%", warning=FALSE, message=FALSE}
+ggplot(f0_24_f9_c6_c8_85_low) + 
+  geom_point(aes(x = DateTime, y = pm2_5_atm, color = "A")) +
+  geom_point(aes(x = DateTime, y = pm2_5_atm_b, color = "B")) +
+  ggtitle("PM2.5 per channel from 5/20/26 to 6/1/26, >250um/m3 filtered out", subtitle = unique(f0_24_f9_c6_c8_85_low$mac_address)) + 
+  xlab("Observation Day") + ylab("PM2.5 Concentration (ug/m3)") +
+  scale_x_datetime(date_breaks="2 days") + 
+  #scale_color_manual(values=met.brewer("Java")) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.subtitle = element_text(hjust = 0.5, color="grey32")) +
+  theme(axis.title.y = element_text(vjust = 0.5)) +
+  guides(colour = guide_legend(title = "Channel", override.aes = list(size=5,stroke=2,alpha=1)))
+```
