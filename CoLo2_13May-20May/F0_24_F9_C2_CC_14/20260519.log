@@ -1,0 +1,1240 @@
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.442 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.118 2026/05/19T00:11:26z: f0:24:f9:c2:cc:14
+ 0h00:04.120 2026/05/19T00:11:26z: SSID: that iPhone
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.439 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.115 2026/05/19T00:31:07z: f0:24:f9:c2:cc:14
+ 0h00:04.117 2026/05/19T00:31:07z: SSID: that iPhone
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.484 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.160 2026/05/19T00:50:48z: f0:24:f9:c2:cc:14
+ 0h00:04.162 2026/05/19T00:50:48z: SSID: that iPhone
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.481 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.157 2026/05/19T01:10:28z: f0:24:f9:c2:cc:14
+ 0h00:04.159 2026/05/19T01:10:28z: SSID: that iPhone
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.437 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.113 2026/05/19T01:30:08z: f0:24:f9:c2:cc:14
+ 0h00:04.115 2026/05/19T01:30:08z: SSID: that iPhone
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.475 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.152 2026/05/19T01:49:48z: f0:24:f9:c2:cc:14
+ 0h00:04.153 2026/05/19T01:49:48z: SSID: that iPhone
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.511 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.187 2026/05/19T02:09:29z: f0:24:f9:c2:cc:14
+ 0h00:04.188 2026/05/19T02:09:29z: SSID: that iPhone
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.516 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.192 2026/05/19T02:29:10z: f0:24:f9:c2:cc:14
+ 0h00:04.194 2026/05/19T02:29:10z: SSID: that iPhone
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.516 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.193 2026/05/19T02:48:51z: f0:24:f9:c2:cc:14
+ 0h00:04.194 2026/05/19T02:48:51z: SSID: that iPhone
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.474 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.150 2026/05/19T03:08:31z: f0:24:f9:c2:cc:14
+ 0h00:04.152 2026/05/19T03:08:31z: SSID: that iPhone
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.487 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.163 2026/05/19T03:28:12z: f0:24:f9:c2:cc:14
+ 0h00:04.165 2026/05/19T03:28:12z: SSID: that iPhone
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.486 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.162 2026/05/19T03:47:53z: f0:24:f9:c2:cc:14
+ 0h00:04.164 2026/05/19T03:47:53z: SSID: that iPhone
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.486 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.162 2026/05/19T04:07:34z: f0:24:f9:c2:cc:14
+ 0h00:04.164 2026/05/19T04:07:34z: SSID: that iPhone
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.446 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.123 2026/05/19T04:27:14z: f0:24:f9:c2:cc:14
+ 0h00:04.124 2026/05/19T04:27:14z: SSID: that iPhone
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.476 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.153 2026/05/19T04:46:54z: f0:24:f9:c2:cc:14
+ 0h00:04.154 2026/05/19T04:46:54z: SSID: that iPhone
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.440 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.117 2026/05/19T05:06:34z: f0:24:f9:c2:cc:14
+ 0h00:04.118 2026/05/19T05:06:34z: SSID: that iPhone
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.444 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.121 2026/05/19T05:26:15z: f0:24:f9:c2:cc:14
+ 0h00:04.122 2026/05/19T05:26:15z: SSID: that iPhone
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.432 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.108 2026/05/19T05:45:56z: f0:24:f9:c2:cc:14
+ 0h00:04.110 2026/05/19T05:45:56z: SSID: that iPhone
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.480 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.156 2026/05/19T06:05:36z: f0:24:f9:c2:cc:14
+ 0h00:04.158 2026/05/19T06:05:36z: SSID: that iPhone
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.475 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.152 2026/05/19T06:25:16z: f0:24:f9:c2:cc:14
+ 0h00:04.154 2026/05/19T06:25:16z: SSID: that iPhone
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.481 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.159 2026/05/19T06:44:57z: f0:24:f9:c2:cc:14
+ 0h00:04.160 2026/05/19T06:44:57z: SSID: that iPhone
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.488 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.164 2026/05/19T07:04:38z: f0:24:f9:c2:cc:14
+ 0h00:04.166 2026/05/19T07:04:38z: SSID: that iPhone
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.478 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.154 2026/05/19T07:24:19z: f0:24:f9:c2:cc:14
+ 0h00:04.156 2026/05/19T07:24:19z: SSID: that iPhone
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.446 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.123 2026/05/19T07:43:59z: f0:24:f9:c2:cc:14
+ 0h00:04.124 2026/05/19T07:43:59z: SSID: that iPhone
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.444 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.121 2026/05/19T08:03:39z: f0:24:f9:c2:cc:14
+ 0h00:04.123 2026/05/19T08:03:39z: SSID: that iPhone
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.447 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.124 2026/05/19T08:23:19z: f0:24:f9:c2:cc:14
+ 0h00:04.125 2026/05/19T08:23:19z: SSID: that iPhone
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.445 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.121 2026/05/19T08:43:00z: f0:24:f9:c2:cc:14
+ 0h00:04.123 2026/05/19T08:43:00z: SSID: that iPhone
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.519 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.194 2026/05/19T09:02:41z: f0:24:f9:c2:cc:14
+ 0h00:04.196 2026/05/19T09:02:41z: SSID: that iPhone
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.439 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.114 2026/05/19T09:22:22z: f0:24:f9:c2:cc:14
+ 0h00:04.115 2026/05/19T09:22:22z: SSID: that iPhone
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.517 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.192 2026/05/19T09:42:03z: f0:24:f9:c2:cc:14
+ 0h00:04.194 2026/05/19T09:42:03z: SSID: that iPhone
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.487 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.162 2026/05/19T10:01:43z: f0:24:f9:c2:cc:14
+ 0h00:04.164 2026/05/19T10:01:43z: SSID: that iPhone
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.442 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.117 2026/05/19T10:21:24z: f0:24:f9:c2:cc:14
+ 0h00:04.119 2026/05/19T10:21:24z: SSID: that iPhone
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.448 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.123 2026/05/19T10:41:05z: f0:24:f9:c2:cc:14
+ 0h00:04.124 2026/05/19T10:41:05z: SSID: that iPhone
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.480 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.155 2026/05/19T11:00:45z: f0:24:f9:c2:cc:14
+ 0h00:04.157 2026/05/19T11:00:45z: SSID: that iPhone
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.440 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.116 2026/05/19T11:20:26z: f0:24:f9:c2:cc:14
+ 0h00:04.118 2026/05/19T11:20:26z: SSID: that iPhone
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.444 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.121 2026/05/19T11:40:07z: f0:24:f9:c2:cc:14
+ 0h00:04.122 2026/05/19T11:40:07z: SSID: that iPhone
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.493 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.170 2026/05/19T11:59:47z: f0:24:f9:c2:cc:14
+ 0h00:04.171 2026/05/19T11:59:47z: SSID: that iPhone
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.441 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.117 2026/05/19T12:19:28z: f0:24:f9:c2:cc:14
+ 0h00:04.119 2026/05/19T12:19:28z: SSID: that iPhone
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.442 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.117 2026/05/19T12:39:09z: f0:24:f9:c2:cc:14
+ 0h00:04.119 2026/05/19T12:39:09z: SSID: that iPhone
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.438 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.113 2026/05/19T12:58:50z: f0:24:f9:c2:cc:14
+ 0h00:04.115 2026/05/19T12:58:50z: SSID: that iPhone
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.478 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.153 2026/05/19T13:18:30z: f0:24:f9:c2:cc:14
+ 0h00:04.155 2026/05/19T13:18:30z: SSID: that iPhone
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.445 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.120 2026/05/19T13:38:11z: f0:24:f9:c2:cc:14
+ 0h00:04.122 2026/05/19T13:38:11z: SSID: that iPhone
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.438 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.114 2026/05/19T13:57:51z: f0:24:f9:c2:cc:14
+ 0h00:04.115 2026/05/19T13:57:51z: SSID: that iPhone
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.438 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.113 2026/05/19T14:17:32z: f0:24:f9:c2:cc:14
+ 0h00:04.115 2026/05/19T14:17:32z: SSID: that iPhone
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.448 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.123 2026/05/19T14:37:12z: f0:24:f9:c2:cc:14
+ 0h00:04.125 2026/05/19T14:37:12z: SSID: that iPhone
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.446 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.122 2026/05/19T14:56:54z: f0:24:f9:c2:cc:14
+ 0h00:04.123 2026/05/19T14:56:54z: SSID: that iPhone
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.443 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.118 2026/05/19T15:16:35z: f0:24:f9:c2:cc:14
+ 0h00:04.120 2026/05/19T15:16:35z: SSID: that iPhone
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.444 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.119 2026/05/19T15:36:15z: f0:24:f9:c2:cc:14
+ 0h00:04.121 2026/05/19T15:36:15z: SSID: that iPhone
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.450 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.125 2026/05/19T15:55:55z: f0:24:f9:c2:cc:14
+ 0h00:04.127 2026/05/19T15:55:55z: SSID: that iPhone
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.446 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.121 2026/05/19T16:15:35z: f0:24:f9:c2:cc:14
+ 0h00:04.123 2026/05/19T16:15:35z: SSID: that iPhone
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.440 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.115 2026/05/19T16:35:16z: f0:24:f9:c2:cc:14
+ 0h00:04.117 2026/05/19T16:35:16z: SSID: that iPhone
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.447 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.122 2026/05/19T16:54:56z: f0:24:f9:c2:cc:14
+ 0h00:04.124 2026/05/19T16:54:56z: SSID: that iPhone
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.454 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.129 2026/05/19T17:14:36z: f0:24:f9:c2:cc:14
+ 0h00:04.131 2026/05/19T17:14:36z: SSID: that iPhone
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.489 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.164 2026/05/19T17:34:17z: f0:24:f9:c2:cc:14
+ 0h00:04.166 2026/05/19T17:34:17z: SSID: that iPhone
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.483 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.159 2026/05/19T17:53:57z: f0:24:f9:c2:cc:14
+ 0h00:04.160 2026/05/19T17:53:57z: SSID: that iPhone
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.450 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.126 2026/05/19T18:13:37z: f0:24:f9:c2:cc:14
+ 0h00:04.127 2026/05/19T18:13:37z: SSID: that iPhone
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.451 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.127 2026/05/19T18:33:19z: f0:24:f9:c2:cc:14
+ 0h00:04.128 2026/05/19T18:33:19z: SSID: that iPhone
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.524 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.199 2026/05/19T18:53:00z: f0:24:f9:c2:cc:14
+ 0h00:04.201 2026/05/19T18:53:00z: SSID: that iPhone
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.448 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.124 2026/05/19T19:12:40z: f0:24:f9:c2:cc:14
+ 0h00:04.125 2026/05/19T19:12:40z: SSID: that iPhone
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.484 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.159 2026/05/19T19:32:21z: f0:24:f9:c2:cc:14
+ 0h00:04.161 2026/05/19T19:32:21z: SSID: that iPhone
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.447 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.122 2026/05/19T19:52:02z: f0:24:f9:c2:cc:14
+ 0h00:04.124 2026/05/19T19:52:02z: SSID: that iPhone
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.482 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.158 2026/05/19T20:11:43z: f0:24:f9:c2:cc:14
+ 0h00:04.159 2026/05/19T20:11:43z: SSID: that iPhone
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.448 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.124 2026/05/19T20:31:23z: f0:24:f9:c2:cc:14
+ 0h00:04.126 2026/05/19T20:31:23z: SSID: that iPhone
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.528 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.203 2026/05/19T20:51:04z: f0:24:f9:c2:cc:14
+ 0h00:04.205 2026/05/19T20:51:04z: SSID: that iPhone
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.446 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.123 2026/05/19T21:10:44z: f0:24:f9:c2:cc:14
+ 0h00:04.124 2026/05/19T21:10:44z: SSID: that iPhone
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.445 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.121 2026/05/19T21:30:24z: f0:24:f9:c2:cc:14
+ 0h00:04.123 2026/05/19T21:30:24z: SSID: that iPhone
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.491 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.167 2026/05/19T21:50:05z: f0:24:f9:c2:cc:14
+ 0h00:04.168 2026/05/19T21:50:05z: SSID: that iPhone
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.515 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.191 2026/05/19T22:09:45z: f0:24:f9:c2:cc:14
+ 0h00:04.193 2026/05/19T22:09:45z: SSID: that iPhone
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.493 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.169 2026/05/19T22:29:26z: f0:24:f9:c2:cc:14
+ 0h00:04.171 2026/05/19T22:29:26z: SSID: that iPhone
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.486 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.162 2026/05/19T22:49:06z: f0:24:f9:c2:cc:14
+ 0h00:04.163 2026/05/19T22:49:06z: SSID: that iPhone
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.447 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.123 2026/05/19T23:08:47z: f0:24:f9:c2:cc:14
+ 0h00:04.125 2026/05/19T23:08:47z: SSID: that iPhone
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.488 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.164 2026/05/19T23:28:28z: f0:24:f9:c2:cc:14
+ 0h00:04.165 2026/05/19T23:28:28z: SSID: that iPhone
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,2)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.445 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.121 2026/05/19T23:48:08z: f0:24:f9:c2:cc:14
+ 0h00:04.122 2026/05/19T23:48:08z: SSID: that iPhone
+1 BSEC warning code : 100

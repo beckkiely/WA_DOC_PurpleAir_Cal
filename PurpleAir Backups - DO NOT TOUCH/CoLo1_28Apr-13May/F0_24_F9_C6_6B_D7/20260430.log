@@ -1,0 +1,1228 @@
+
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.463 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.139 2026/04/30T00:10:41z: f0:24:f9:c6:6b:d7
+ 0h00:04.141 2026/04/30T00:10:41z: SSID: wifi
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.465 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.141 2026/04/30T00:30:21z: f0:24:f9:c6:6b:d7
+ 0h00:04.143 2026/04/30T00:30:21z: SSID: wifi
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.454 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.131 2026/04/30T00:50:01z: f0:24:f9:c6:6b:d7
+ 0h00:04.132 2026/04/30T00:50:01z: SSID: wifi
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.460 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.136 2026/04/30T01:09:42z: f0:24:f9:c6:6b:d7
+ 0h00:04.138 2026/04/30T01:09:42z: SSID: wifi
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.466 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.142 2026/04/30T01:29:23z: f0:24:f9:c6:6b:d7
+ 0h00:04.144 2026/04/30T01:29:23z: SSID: wifi
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.496 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.173 2026/04/30T01:49:04z: f0:24:f9:c6:6b:d7
+ 0h00:04.174 2026/04/30T01:49:04z: SSID: wifi
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.511 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.187 2026/04/30T02:08:44z: f0:24:f9:c6:6b:d7
+ 0h00:04.189 2026/04/30T02:08:44z: SSID: wifi
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.460 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.137 2026/04/30T02:28:25z: f0:24:f9:c6:6b:d7
+ 0h00:04.138 2026/04/30T02:28:25z: SSID: wifi
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.469 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.147 2026/04/30T02:48:06z: f0:24:f9:c6:6b:d7
+ 0h00:04.148 2026/04/30T02:48:06z: SSID: wifi
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.548 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.224 2026/04/30T03:07:46z: f0:24:f9:c6:6b:d7
+ 0h00:04.226 2026/04/30T03:07:46z: SSID: wifi
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.462 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.138 2026/04/30T03:27:27z: f0:24:f9:c6:6b:d7
+ 0h00:04.140 2026/04/30T03:27:27z: SSID: wifi
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.510 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.185 2026/04/30T03:47:07z: f0:24:f9:c6:6b:d7
+ 0h00:04.187 2026/04/30T03:47:07z: SSID: wifi
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.462 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.137 2026/04/30T04:06:48z: f0:24:f9:c6:6b:d7
+ 0h00:04.139 2026/04/30T04:06:48z: SSID: wifi
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.466 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.141 2026/04/30T04:26:29z: f0:24:f9:c6:6b:d7
+ 0h00:04.143 2026/04/30T04:26:29z: SSID: wifi
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.511 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.186 2026/04/30T04:46:10z: f0:24:f9:c6:6b:d7
+ 0h00:04.188 2026/04/30T04:46:10z: SSID: wifi
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.462 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.139 2026/04/30T05:05:51z: f0:24:f9:c6:6b:d7
+ 0h00:04.140 2026/04/30T05:05:51z: SSID: wifi
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.468 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.145 2026/04/30T05:25:32z: f0:24:f9:c6:6b:d7
+ 0h00:04.147 2026/04/30T05:25:32z: SSID: wifi
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.462 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.139 2026/04/30T05:45:12z: f0:24:f9:c6:6b:d7
+ 0h00:04.140 2026/04/30T05:45:12z: SSID: wifi
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.459 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.135 2026/04/30T06:04:53z: f0:24:f9:c6:6b:d7
+ 0h00:04.137 2026/04/30T06:04:53z: SSID: wifi
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.463 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.140 2026/04/30T06:24:33z: f0:24:f9:c6:6b:d7
+ 0h00:04.142 2026/04/30T06:24:33z: SSID: wifi
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.508 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.183 2026/04/30T06:44:13z: f0:24:f9:c6:6b:d7
+ 0h00:04.185 2026/04/30T06:44:13z: SSID: wifi
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.498 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.172 2026/04/30T07:03:53z: f0:24:f9:c6:6b:d7
+ 0h00:04.174 2026/04/30T07:03:54z: SSID: wifi
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.468 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.143 2026/04/30T07:23:35z: f0:24:f9:c6:6b:d7
+ 0h00:04.144 2026/04/30T07:23:35z: SSID: wifi
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.506 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.181 2026/04/30T07:43:16z: f0:24:f9:c6:6b:d7
+ 0h00:04.183 2026/04/30T07:43:16z: SSID: wifi
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.515 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.190 2026/04/30T08:02:57z: f0:24:f9:c6:6b:d7
+ 0h00:04.192 2026/04/30T08:02:57z: SSID: wifi
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.508 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.183 2026/04/30T08:22:38z: f0:24:f9:c6:6b:d7
+ 0h00:04.184 2026/04/30T08:22:38z: SSID: wifi
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.516 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.191 2026/04/30T08:42:18z: f0:24:f9:c6:6b:d7
+ 0h00:04.193 2026/04/30T08:42:18z: SSID: wifi
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.475 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.150 2026/04/30T09:01:59z: f0:24:f9:c6:6b:d7
+ 0h00:04.152 2026/04/30T09:01:59z: SSID: wifi
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.465 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.141 2026/04/30T09:21:39z: f0:24:f9:c6:6b:d7
+ 0h00:04.142 2026/04/30T09:21:39z: SSID: wifi
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.468 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.143 2026/04/30T09:41:19z: f0:24:f9:c6:6b:d7
+ 0h00:04.145 2026/04/30T09:41:19z: SSID: wifi
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.473 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.148 2026/04/30T10:01:00z: f0:24:f9:c6:6b:d7
+ 0h00:04.150 2026/04/30T10:01:00z: SSID: wifi
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.514 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.189 2026/04/30T10:20:41z: f0:24:f9:c6:6b:d7
+ 0h00:04.191 2026/04/30T10:20:41z: SSID: wifi
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.511 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.187 2026/04/30T10:40:21z: f0:24:f9:c6:6b:d7
+ 0h00:04.188 2026/04/30T10:40:21z: SSID: wifi
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.507 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.182 2026/04/30T11:00:02z: f0:24:f9:c6:6b:d7
+ 0h00:04.184 2026/04/30T11:00:02z: SSID: wifi
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.467 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.143 2026/04/30T11:19:44z: f0:24:f9:c6:6b:d7
+ 0h00:04.144 2026/04/30T11:19:44z: SSID: wifi
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.472 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.148 2026/04/30T11:39:24z: f0:24:f9:c6:6b:d7
+ 0h00:04.149 2026/04/30T11:39:24z: SSID: wifi
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.467 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.143 2026/04/30T11:59:05z: f0:24:f9:c6:6b:d7
+ 0h00:04.145 2026/04/30T11:59:05z: SSID: wifi
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.470 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.146 2026/04/30T12:18:46z: f0:24:f9:c6:6b:d7
+ 0h00:04.147 2026/04/30T12:18:46z: SSID: wifi
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.519 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.194 2026/04/30T12:38:27z: f0:24:f9:c6:6b:d7
+ 0h00:04.196 2026/04/30T12:38:27z: SSID: wifi
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.474 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.150 2026/04/30T12:58:07z: f0:24:f9:c6:6b:d7
+ 0h00:04.151 2026/04/30T12:58:07z: SSID: wifi
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.509 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.184 2026/04/30T13:17:47z: f0:24:f9:c6:6b:d7
+ 0h00:04.186 2026/04/30T13:17:47z: SSID: wifi
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.510 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.185 2026/04/30T13:37:28z: f0:24:f9:c6:6b:d7
+ 0h00:04.187 2026/04/30T13:37:28z: SSID: wifi
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.465 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.141 2026/04/30T13:57:08z: f0:24:f9:c6:6b:d7
+ 0h00:04.142 2026/04/30T13:57:08z: SSID: wifi
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.475 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.150 2026/04/30T14:16:48z: f0:24:f9:c6:6b:d7
+ 0h00:04.152 2026/04/30T14:16:49z: SSID: wifi
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.463 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.139 2026/04/30T14:36:29z: f0:24:f9:c6:6b:d7
+ 0h00:04.140 2026/04/30T14:36:29z: SSID: wifi
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.506 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.181 2026/04/30T14:56:09z: f0:24:f9:c6:6b:d7
+ 0h00:04.183 2026/04/30T14:56:09z: SSID: wifi
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.468 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.144 2026/04/30T15:15:50z: f0:24:f9:c6:6b:d7
+ 0h00:04.146 2026/04/30T15:15:50z: SSID: wifi
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.464 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.140 2026/04/30T15:35:30z: f0:24:f9:c6:6b:d7
+ 0h00:04.141 2026/04/30T15:35:30z: SSID: wifi
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.464 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.139 2026/04/30T15:55:11z: f0:24:f9:c6:6b:d7
+ 0h00:04.141 2026/04/30T15:55:11z: SSID: wifi
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.464 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.140 2026/04/30T16:14:51z: f0:24:f9:c6:6b:d7
+ 0h00:04.142 2026/04/30T16:14:51z: SSID: wifi
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.501 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.176 2026/04/30T16:34:32z: f0:24:f9:c6:6b:d7
+ 0h00:04.178 2026/04/30T16:34:32z: SSID: wifi
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.473 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.149 2026/04/30T16:54:12z: f0:24:f9:c6:6b:d7
+ 0h00:04.151 2026/04/30T16:54:12z: SSID: wifi
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.513 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.188 2026/04/30T17:13:53z: f0:24:f9:c6:6b:d7
+ 0h00:04.190 2026/04/30T17:13:53z: SSID: wifi
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.461 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.137 2026/04/30T17:33:33z: f0:24:f9:c6:6b:d7
+ 0h00:04.138 2026/04/30T17:33:33z: SSID: wifi
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.547 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.223 2026/04/30T17:53:14z: f0:24:f9:c6:6b:d7
+ 0h00:04.224 2026/04/30T17:53:14z: SSID: wifi
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.466 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.142 2026/04/30T18:12:54z: f0:24:f9:c6:6b:d7
+ 0h00:04.143 2026/04/30T18:12:54z: SSID: wifi
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.468 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.144 2026/04/30T18:32:35z: f0:24:f9:c6:6b:d7
+ 0h00:04.146 2026/04/30T18:32:35z: SSID: wifi
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.470 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.146 2026/04/30T18:52:16z: f0:24:f9:c6:6b:d7
+ 0h00:04.148 2026/04/30T18:52:16z: SSID: wifi
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.468 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.144 2026/04/30T19:11:56z: f0:24:f9:c6:6b:d7
+ 0h00:04.146 2026/04/30T19:11:56z: SSID: wifi
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.470 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.146 2026/04/30T19:31:37z: f0:24:f9:c6:6b:d7
+ 0h00:04.147 2026/04/30T19:31:37z: SSID: wifi
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.514 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.190 2026/04/30T19:51:17z: f0:24:f9:c6:6b:d7
+ 0h00:04.192 2026/04/30T19:51:17z: SSID: wifi
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.471 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.147 2026/04/30T20:10:57z: f0:24:f9:c6:6b:d7
+ 0h00:04.148 2026/04/30T20:10:57z: SSID: wifi
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.465 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.141 2026/04/30T20:30:38z: f0:24:f9:c6:6b:d7
+ 0h00:04.142 2026/04/30T20:30:38z: SSID: wifi
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.496 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.172 2026/04/30T20:50:18z: f0:24:f9:c6:6b:d7
+ 0h00:04.174 2026/04/30T20:50:18z: SSID: wifi
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.460 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.136 2026/04/30T21:09:58z: f0:24:f9:c6:6b:d7
+ 0h00:04.138 2026/04/30T21:09:58z: SSID: wifi
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.462 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.138 2026/04/30T21:29:38z: f0:24:f9:c6:6b:d7
+ 0h00:04.140 2026/04/30T21:29:38z: SSID: wifi
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.502 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.178 2026/04/30T21:49:18z: f0:24:f9:c6:6b:d7
+ 0h00:04.180 2026/04/30T21:49:18z: SSID: wifi
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.464 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.140 2026/04/30T22:09:00z: f0:24:f9:c6:6b:d7
+ 0h00:04.142 2026/04/30T22:09:00z: SSID: wifi
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.462 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.138 2026/04/30T22:28:40z: f0:24:f9:c6:6b:d7
+ 0h00:04.139 2026/04/30T22:28:40z: SSID: wifi
+1 BSEC warning code : 100
+
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.463 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.140 2026/04/30T22:48:20z: f0:24:f9:c6:6b:d7
+ 0h00:04.141 2026/04/30T22:48:20z: SSID: wifi
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.466 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.142 2026/04/30T23:08:02z: f0:24:f9:c6:6b:d7
+ 0h00:04.144 2026/04/30T23:08:02z: SSID: wifi
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.462 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.138 2026/04/30T23:27:42z: f0:24:f9:c6:6b:d7
+ 0h00:04.140 2026/04/30T23:27:42z: SSID: wifi
+1 BSEC warning code : 100
+
+ ets Jan  8 2013,rst cause:1, boot mode:(3,1)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+v8b899c12
+~ld
+
+
+7.04
+ 0h00:00.460 1970/01/01T08:00:00z: SPIFFS Active
+ 0h00:04.137 2026/04/30T23:47:22z: f0:24:f9:c6:6b:d7
+ 0h00:04.138 2026/04/30T23:47:22z: SSID: wifi
+1 BSEC warning code : 100

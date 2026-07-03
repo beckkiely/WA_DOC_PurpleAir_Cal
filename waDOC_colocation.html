@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2026-06-03">
+
+<title>WA DOC Purple Air Monitor Co-Location QA</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="waDOC_colocation_files/libs/clipboard/clipboard.min.js"></script>
+<script src="waDOC_colocation_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="waDOC_colocation_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="waDOC_colocation_files/libs/quarto-html/popper.min.js"></script>
+<script src="waDOC_colocation_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="waDOC_colocation_files/libs/quarto-html/anchor.min.js"></script>
+<link href="waDOC_colocation_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="waDOC_colocation_files/libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="waDOC_colocation_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="waDOC_colocation_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="waDOC_colocation_files/libs/bootstrap/bootstrap-138a6193a3bd40baf1e627da441a4734.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">WA DOC Purple Air Monitor Co-Location QA</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 3, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="setup-tasks" class="level2">
+<h2 class="anchored" data-anchor-id="setup-tasks">Setup tasks</h2>
+<section id="clear-environment" class="level3">
+<h3 class="anchored" data-anchor-id="clear-environment">Clear environment</h3>
+</section>
+<section id="load-packages" class="level3">
+<h3 class="anchored" data-anchor-id="load-packages">Load packages</h3>
+</section>
+<section id="make-functions" class="level3">
+<h3 class="anchored" data-anchor-id="make-functions">Make functions</h3>
+</section>
+</section>
+<section id="read-in-nephelometer-data" class="level2">
+<h2 class="anchored" data-anchor-id="read-in-nephelometer-data">Read in Nephelometer data</h2>
+<hr>
+</section>
+<section id="co-location" class="level1">
+<h1>4/28/26 - 5/13/26 Co-Location</h1>
+<section id="load-and-process-pa-files" class="level2">
+<h2 class="anchored" data-anchor-id="load-and-process-pa-files">Load and process PA files</h2>
+<section id="load-4-28-through-5-13-files" class="level3">
+<h3 class="anchored" data-anchor-id="load-4-28-through-5-13-files">load 4-28 through 5-13 files</h3>
+</section>
+<section id="process-chanel-averages" class="level3">
+<h3 class="anchored" data-anchor-id="process-chanel-averages">process chanel averages</h3>
+<p>Sensors (by mac address) used in this co-location period:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "F0_24_F9_C6_29_9D" "F0_24_F9_C6_37_33" "F0_24_F9_C6_6B_D7"
+[4] "F0_24_F9_C6_75_F1" "F0_24_F9_C6_D7_50" "F0_24_F9_C6_E4_72"
+[7] "F0_24_F9_C6_E5_D3"</code></pre>
+</div>
+</div>
+</section>
+<section id="split-data-into-groups" class="level3">
+<h3 class="anchored" data-anchor-id="split-data-into-groups">split data into groups</h3>
+<hr>
+</section>
+</section>
+<section id="pm2.5-channel-agreement-individual-sensors-for-428-513" class="level2">
+<h2 class="anchored" data-anchor-id="pm2.5-channel-agreement-individual-sensors-for-428-513">PM2.5 Channel Agreement: Individual Sensors for 4/28-5/13</h2>
+<p>To examine whether the channels agree with each other on individual sensors, I created plots of channel a vs.&nbsp;channel b., and included a regression line and the R^2 value.</p>
+<section id="plot-regression-of-channel-a-vs-b" class="level3">
+<h3 class="anchored" data-anchor-id="plot-regression-of-channel-a-vs-b">plot regression of channel a vs b</h3>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-11-2.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-11-3.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-11-4.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-11-5.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-11-6.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-11-7.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>All the units have R^2 of either 0.95 or 0.96, except unit 5 (F0:24:F9:C6:D7:50), where the R^2 is 0.6 with a large visible difference in the two sensors. While unit 3 (F0:24:F9:C6:6B:D7) had an R^2 =0.95, it had some observations with discrepancies between the two sensors. None of the units seem to have outliers like Cecilia’s units did, so I guess this is good?</p>
+</section>
+<section id="time-series-of-channel-a-vs-b" class="level3">
+<h3 class="anchored" data-anchor-id="time-series-of-channel-a-vs-b">time series of channel a vs b</h3>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-13-2.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-13-3.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-13-4.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-13-5.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-13-6.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-13-7.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="pm2.5-time-series-for-co-location-period-428-513" class="level2">
+<h2 class="anchored" data-anchor-id="pm2.5-time-series-for-co-location-period-428-513">PM2.5 Time Series for Co-Location Period 4/28-5/13</h2>
+<p>I averaged the data for channels a and b for the colocation period for all sensors. I plotted the time series of the averaged PM2.5 (between channel a and b) for the four groups of sensors here, and inspected them for any outliers and inconsistencies between sensors.</p>
+<section id="unit-averages-plotted-for-set-s1" class="level3">
+<h3 class="anchored" data-anchor-id="unit-averages-plotted-for-set-s1">unit averages plotted for set s1</h3>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>First four units look good!</p>
+</section>
+<section id="unit-averages-plotted-for-set-s2" class="level3">
+<h3 class="anchored" data-anchor-id="unit-averages-plotted-for-set-s2">unit averages plotted for set s2</h3>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Unit 5 is clearly reading higher than the other two units in that group.</p>
+<hr>
+</section>
+</section>
+<section id="average-pm2.5-and-neph-by-time" class="level2">
+<h2 class="anchored" data-anchor-id="average-pm2.5-and-neph-by-time">Average PM2.5 and neph by time</h2>
+<section id="standardize-times-fill-missing-values-arrange-for-merging" class="level3">
+<h3 class="anchored" data-anchor-id="standardize-times-fill-missing-values-arrange-for-merging">standardize times, fill missing values, arrange for merging</h3>
+</section>
+<section id="regression-on-neph-and-pa-data" class="level3">
+<h3 class="anchored" data-anchor-id="regression-on-neph-and-pa-data">regression on neph and PA data</h3>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = npm25_LFP ~ pm25ave + current_humidity, data = mydata_1min)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-5.3188 -0.5775 -0.0427  0.5116  6.5378 
+
+Coefficients:
+                  Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)       3.727746   0.075258   49.53   &lt;2e-16 ***
+pm25ave           0.443749   0.007119   62.33   &lt;2e-16 ***
+current_humidity -0.024908   0.001739  -14.32   &lt;2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 1.106 on 2569 degrees of freedom
+  (152439 observations deleted due to missingness)
+Multiple R-squared:  0.6038,    Adjusted R-squared:  0.6035 
+F-statistic:  1958 on 2 and 2569 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="unit-vs.-total-average-pm2.5-for-42826-to-51326" class="level2">
+<h2 class="anchored" data-anchor-id="unit-vs.-total-average-pm2.5-for-42826-to-51326">Unit vs.&nbsp;Total Average PM2.5 for 4/28/26 to 5/13/26</h2>
+<section id="plot-regression-of-unit-average-vs-all-units-average" class="level3">
+<h3 class="anchored" data-anchor-id="plot-regression-of-unit-average-vs-all-units-average">plot regression of unit average vs all units average</h3>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-19-2.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-19-3.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-19-4.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-19-5.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-19-6.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-19-7.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="comparing-the-nephelometer-to-pa-data-428---513" class="level2">
+<h2 class="anchored" data-anchor-id="comparing-the-nephelometer-to-pa-data-428---513">Comparing the nephelometer to PA data 4/28 - 5/13</h2>
+<section id="plot-neph-vs-pa-averages" class="level3">
+<h3 class="anchored" data-anchor-id="plot-neph-vs-pa-averages">plot neph vs PA averages</h3>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 11 rows containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="co-location-1" class="level1">
+<h1>5/13/26 - 5/20/2026 Co-Location</h1>
+<section id="load-and-process-pa-files-1" class="level2">
+<h2 class="anchored" data-anchor-id="load-and-process-pa-files-1">Load and process PA files</h2>
+<section id="load-513---520-files" class="level3">
+<h3 class="anchored" data-anchor-id="load-513---520-files">load 5/13 - 5/20 files</h3>
+</section>
+<section id="process-chanel-averages-1" class="level3">
+<h3 class="anchored" data-anchor-id="process-chanel-averages-1">process chanel averages</h3>
+<p>Sensors (by mac address) used in this co-location period:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "F0_24_F9_C2_4B_B8" "F0_24_F9_C2_51_B_" "F0_24_F9_C2_C2_ED"
+[4] "F0_24_F9_C2_CC_14" "F0_24_F9_C6_71_D7" "F0_24_F9_C6_86_F8"
+[7] "F0_24_F9_C6_A2_FC" "F0_24_F9_C6_BD_E0" "F0_24_F9_C6_C7_8F"</code></pre>
+</div>
+</div>
+</section>
+<section id="split-data-into-groups-1" class="level3">
+<h3 class="anchored" data-anchor-id="split-data-into-groups-1">split data into groups</h3>
+<hr>
+</section>
+</section>
+<section id="pm2.5-channel-agreement-individual-sensors-for-513-520" class="level2">
+<h2 class="anchored" data-anchor-id="pm2.5-channel-agreement-individual-sensors-for-513-520">PM2.5 Channel Agreement: Individual Sensors for 5/13-5/20</h2>
+<p>To examine whether the channels agree with each other on individual sensors, I created plots of channel a vs.&nbsp;channel b., and included a regression line and the R^2 value.</p>
+<section id="plot-regression-of-channel-a-vs-b-1" class="level3">
+<h3 class="anchored" data-anchor-id="plot-regression-of-channel-a-vs-b-1">plot regression of channel a vs b</h3>
+<p>All the units have R^2 from 0.95 to 0.97, except unit 9 (F0_24_F9_C6_C7_8F), where the R^2 is 0.0075. This appears to be due to two high outliers on one of the sensors - let’s try filtering those out and see if that fixes things.</p>
+</section>
+<section id="filter-out-outliers-for-bad-sensors-rerun-plots" class="level3">
+<h3 class="anchored" data-anchor-id="filter-out-outliers-for-bad-sensors-rerun-plots">filter out outliers for bad sensors, rerun plots</h3>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-29-2.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-29-3.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-29-4.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-29-5.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-29-6.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-29-7.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-29-8.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-29-9.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>This fixes things right up, with unit 9 now having a R^2 of 0.96. Looking good!</p>
+<hr>
+</section>
+</section>
+<section id="pm2.5-time-series-for-co-location-period-513-520" class="level2">
+<h2 class="anchored" data-anchor-id="pm2.5-time-series-for-co-location-period-513-520">PM2.5 Time Series for Co-Location Period 5/13-5/20</h2>
+<p>I averaged the data for channels a and b for the colocation period for all sensors. I plotted the time series of the averaged PM2.5 (between channel a and b) for the four groups of sensors here, and inspected them for any outliers and inconsistencies between sensors.</p>
+<section id="unit-averages-plotted-for-set-s1-1" class="level3">
+<h3 class="anchored" data-anchor-id="unit-averages-plotted-for-set-s1-1">unit averages plotted for set s1</h3>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>First four units look good! It looks like there were some times where 4b:b8 were on while the others weren’t - maybe a power failure on a specific outlet?</p>
+</section>
+<section id="unit-averages-plotted-for-set-s2-1" class="level3">
+<h3 class="anchored" data-anchor-id="unit-averages-plotted-for-set-s2-1">unit averages plotted for set s2</h3>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Looks good, some similarly missing data for some units. Not sure what happened there.</p>
+<hr>
+</section>
+</section>
+<section id="average-pm2.5-and-neph-by-time-1" class="level2">
+<h2 class="anchored" data-anchor-id="average-pm2.5-and-neph-by-time-1">Average PM2.5 and neph by time</h2>
+<section id="standardize-times-fill-missing-values-arrange-for-merging-1" class="level3">
+<h3 class="anchored" data-anchor-id="standardize-times-fill-missing-values-arrange-for-merging-1">standardize times, fill missing values, arrange for merging</h3>
+</section>
+<section id="regression-on-neph-and-pa-data-1" class="level3">
+<h3 class="anchored" data-anchor-id="regression-on-neph-and-pa-data-1">regression on neph and PA data</h3>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = npm25_LFP ~ pm25ave + current_humidity, data = mydata_1min)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-2.1949 -0.5302 -0.0474  0.4501  3.3420 
+
+Coefficients:
+                 Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)      1.927744   0.072145  26.720  &lt; 2e-16 ***
+pm25ave          0.406486   0.008240  49.330  &lt; 2e-16 ***
+current_humidity 0.006856   0.001472   4.658 3.47e-06 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.7677 on 1521 degrees of freedom
+  (86633 observations deleted due to missingness)
+Multiple R-squared:  0.6202,    Adjusted R-squared:  0.6197 
+F-statistic:  1242 on 2 and 1521 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="unit-vs.-total-average-pm2.5-for-51326-to-52026" class="level2">
+<h2 class="anchored" data-anchor-id="unit-vs.-total-average-pm2.5-for-51326-to-52026">Unit vs.&nbsp;Total Average PM2.5 for 5/13/26 to 5/20/26</h2>
+<section id="plot-regression-of-unit-average-vs-all-units-average-1" class="level3">
+<h3 class="anchored" data-anchor-id="plot-regression-of-unit-average-vs-all-units-average-1">plot regression of unit average vs all units average</h3>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-36-1.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-36-2.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-36-3.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-36-4.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-36-5.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-36-6.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-36-7.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-36-8.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-36-9.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="comparing-the-nephelometer-to-pa-data-513---520" class="level2">
+<h2 class="anchored" data-anchor-id="comparing-the-nephelometer-to-pa-data-513---520">Comparing the nephelometer to PA data 5/13 - 5/20</h2>
+<section id="plot-neph-vs-pa-averages-1" class="level3">
+<h3 class="anchored" data-anchor-id="plot-neph-vs-pa-averages-1">plot neph vs PA averages</h3>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 1 row containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-37-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="co-location-2" class="level1">
+<h1>5/20/26 - 6/01/2026 Co-Location</h1>
+<section id="load-and-process-pa-files-2" class="level2">
+<h2 class="anchored" data-anchor-id="load-and-process-pa-files-2">Load and process PA files</h2>
+<section id="load-520---61-files" class="level3">
+<h3 class="anchored" data-anchor-id="load-520---61-files">load 5/20 - 6/1 files</h3>
+</section>
+<section id="process-chanel-averages-2" class="level3">
+<h3 class="anchored" data-anchor-id="process-chanel-averages-2">process chanel averages</h3>
+<p>Sensors (by mac address) used in this co-location period:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "F0_24_F9_C6_37_E0" "F0_24_F9_C6_7C_56" "F0_24_F9_C6_8D_8A"
+ [4] "F0_24_F9_C6_91_C0" "F0_24_F9_C6_C7_D9" "F0_24_F9_C6_C8_85"
+ [7] "F0_24_F9_C6_E3_C5" "F0_24_F9_C6_E4_9E" "F0_24_F9_C6_E5_45"
+[10] "F0_24_F9_C8_A5_51"</code></pre>
+</div>
+</div>
+</section>
+<section id="split-data-into-groups-2" class="level3">
+<h3 class="anchored" data-anchor-id="split-data-into-groups-2">split data into groups</h3>
+<hr>
+</section>
+</section>
+<section id="pm2.5-channel-agreement-individual-sensors-for-520-61" class="level2">
+<h2 class="anchored" data-anchor-id="pm2.5-channel-agreement-individual-sensors-for-520-61">PM2.5 Channel Agreement: Individual Sensors for 5/20-6/1</h2>
+<p>To examine whether the channels agree with each other on individual sensors, I created plots of channel a vs.&nbsp;channel b., and included a regression line and the R^2 value.</p>
+<section id="plot-regression-of-channel-a-vs-b-2" class="level3">
+<h3 class="anchored" data-anchor-id="plot-regression-of-channel-a-vs-b-2">plot regression of channel a vs b</h3>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-44-1.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-44-2.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-44-3.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-44-4.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-44-5.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-44-6.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-44-7.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-44-8.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-44-9.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-44-10.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Wow, more issues on this batch than typical. Unit f0:24:f9:c6:91:c0 has an R^2 of 0.59, it looks like many of the points are along a good trend, so I’m interested in looking at a time series of the readings and see if one sensor went bad at a certain point through the colocation.</p>
+<p>Next problematic unit is f0:24:f9:c6:c8:85, which has about 166 readings on sensor b that are well over 250ug/m3, with many nearing 3500 ug/m3. This was a string of bad readings from 5/23 at 0601 to 1126. Even if we filter out all readings over 250ug/m3, we get an R^2 of 0.59, so definetely some big issues there.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-45-1.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Unit f0:24:f9:c6:e4:9e has an R^2 of 0.9, which is lower than typical, and some visible deviations from the A channel. These deviations center around 5/23 at 0526, which is about a half hour before one of the channels on a different unit went off the rails… interesting. EXCLUDE THIS TIME PERIOD AND RERUN??</p>
+<p>Otherwise, the 8 remaining units have R^2 from 0.9 to 0.96, with many of them tending to be more around the 0.92 range. Not the best, but they should be fine.</p>
+</section>
+<section id="time-series-of-channel-a-vs-b-1" class="level3">
+<h3 class="anchored" data-anchor-id="time-series-of-channel-a-vs-b-1">time series of channel a vs b</h3>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-47-1.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-47-2.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-47-3.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-47-4.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-47-5.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-47-6.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-47-7.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-47-8.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-47-9.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-47-10.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Looking at unit f0:24:f9:c6:91:c0, it does look like after 5/23 at about 0600 it started having massive random spikes on channel A, while otherwise being mostly well correlated. With these spikes happening at more or less random, I don’t think it can be reliably used.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-48-1.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Here’s also an additional time series for the unit with crazy high readings, but with those filtered out. Still looking like the A channel is having some issues.</p>
+</section>
+<section id="reconstruction-of-sets-with-defective-units-removed" class="level3">
+<h3 class="anchored" data-anchor-id="reconstruction-of-sets-with-defective-units-removed">Reconstruction of sets with defective units removed</h3>
+<hr>
+</section>
+</section>
+<section id="pm2.5-time-series-for-co-location-period-520-61" class="level2">
+<h2 class="anchored" data-anchor-id="pm2.5-time-series-for-co-location-period-520-61">PM2.5 Time Series for Co-Location Period 5/20-6/1</h2>
+<p>I averaged the data for channels a and b for the colocation period for all viable sensors. I plotted the time series of the averaged PM2.5 (between channel a and b) for the groups of sensors here, and inspected them for any outliers and inconsistencies between sensors.</p>
+<section id="unit-averages-plotted-for-set-s1-2" class="level3">
+<h3 class="anchored" data-anchor-id="unit-averages-plotted-for-set-s1-2">unit averages plotted for set s1</h3>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-51-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="unit-averages-plotted-for-set-s2-2" class="level3">
+<h3 class="anchored" data-anchor-id="unit-averages-plotted-for-set-s2-2">unit averages plotted for set s2</h3>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 1 row containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-53-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="average-pm2.5-and-neph-by-time-2" class="level2">
+<h2 class="anchored" data-anchor-id="average-pm2.5-and-neph-by-time-2">Average PM2.5 and neph by time</h2>
+<section id="standardize-times-fill-missing-values-arrange-for-merging-2" class="level3">
+<h3 class="anchored" data-anchor-id="standardize-times-fill-missing-values-arrange-for-merging-2">standardize times, fill missing values, arrange for merging</h3>
+</section>
+<section id="regression-on-neph-and-pa-data-2" class="level3">
+<h3 class="anchored" data-anchor-id="regression-on-neph-and-pa-data-2">regression on neph and PA data</h3>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = npm25_LFP ~ pm25ave + current_humidity, data = mydata_1min)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-3.6022 -0.5971 -0.1369  0.4548  5.7541 
+
+Coefficients:
+                  Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)       2.423727   0.075687  32.023  &lt; 2e-16 ***
+pm25ave           0.520549   0.009482  54.897  &lt; 2e-16 ***
+current_humidity -0.007825   0.001700  -4.602 4.41e-06 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 1.109 on 2286 degrees of freedom
+  (135732 observations deleted due to missingness)
+Multiple R-squared:  0.5689,    Adjusted R-squared:  0.5685 
+F-statistic:  1508 on 2 and 2286 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="unit-vs.-total-average-pm2.5-for-52026-to-6126" class="level2">
+<h2 class="anchored" data-anchor-id="unit-vs.-total-average-pm2.5-for-52026-to-6126">Unit vs.&nbsp;Total Average PM2.5 for 5/20/26 to 6/1/26</h2>
+<section id="plot-regression-of-unit-average-vs-all-units-average-2" class="level3">
+<h3 class="anchored" data-anchor-id="plot-regression-of-unit-average-vs-all-units-average-2">plot regression of unit average vs all units average</h3>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-55-1.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-55-2.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-55-3.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-55-4.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-55-5.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-55-6.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-55-7.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-55-8.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="comparing-the-nephelometer-to-pa-data-520---61" class="level2">
+<h2 class="anchored" data-anchor-id="comparing-the-nephelometer-to-pa-data-520---61">Comparing the nephelometer to PA data 5/20 - 6/1</h2>
+<section id="plot-neph-vs-pa-averages-2" class="level3">
+<h3 class="anchored" data-anchor-id="plot-neph-vs-pa-averages-2">plot neph vs PA averages</h3>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 11 rows containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="waDOC_colocation_files/figure-html/unnamed-chunk-56-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
